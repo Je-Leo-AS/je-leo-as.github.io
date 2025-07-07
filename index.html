@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leonardo Santos - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Language Toggle -->
+        <div class="flex justify-end mb-6">
+            <select id="language-select" class="bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600">
+                <option value="en">English</option>
+                <option value="pt" selected>Português</option>
+                <option value="es">Español</option>
+            </select>
+        </div>
+
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1 id="title" class="text-4xl font-bold text-gray-800">Portfólio de Leonardo Santos</h1>
+            <p id="subtitle" class="text-lg text-gray-600 mt-2">Engenheiro Eletricista | Cientista de Dados | Desenvolvedor de Software e Firmware</p>
+        </header>
+
+        <!-- About Section -->
+        <section class="mb-12">
+            <h2 id="about-title" class="text-2xl font-semibold text-gray-800 mb-4">Sobre Mim</h2>
+            <p id="about-text" class="text-gray-600">
+                Sou Leonardo Santos, engenheiro eletricista com experiência em projetos elétricos, design de circuitos integrados, firmware e desenvolvimento de software. Tenho expertise em processamento de sinais digitais, incluindo modelagem e implementação de sistemas como limitadores de fase digital (DPL) para comunicação sem fio e geradores de números aleatórios em FPGA. Atualmente, trabalho com desenvolvimento de software para agricultura de precisão, focando no armazenamento e processamento de grandes bancos de dados de equipamentos agrícolas. Minha experiência abrange Python, C, C++, Java, JavaScript, entre outros, além de habilidades em modelagem 3D, design de PCBs e integração com plataformas de nuvem como AWS.
+            </p>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="mb-12">
+            <h2 id="experience-title" class="text-2xl font-semibold text-gray-800 mb-4">Experiência Profissional</h2>
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-xl font-medium text-gray-800">Pesquisador Científico - GICS, Curitiba, PR</h3>
+                    <p class="text-gray-500">Agosto 2021 - Dezembro 2022</p>
+                    <p class="text-gray-600">
+                        Desenvolvi um circuito integrado baseado em gerador de números aleatórios verdadeiros (TRNG) em FPGA, utilizando ferramentas Cadence. Modelei um pré-laboratório digital baseado em Memory Polymamid com Python para otimização de sistemas de processamento de sinais digitais, posteriormente implementado em hardware com ferramentas Xilinx.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-medium text-gray-800">Estagiário de Engenharia - Curitiba, PR</h3>
+                    <p class="text-gray-500">Junho 2022 - Outubro 2022</p>
+                    <p class="text-gray-600">
+                        Auxiliei no desenvolvimento de um gerador de energia de ondas, implementando firmware em C e C++ para interfaces de terminais virtuais de máquinas agrícolas. Desenvolvi algoritmos de ciência de dados para dados espaciais e integração com plataformas de nuvem como AWS.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-medium text-gray-800">Projeto de Extensão - Baja SAE</h3>
+                    <p class="text-gray-500">2019 - 2020</p>
+                    <p class="text-gray-600">
+                        Participei do desenvolvimento de um veículo off-road, focando no subsistema elétrico. Realizei testes, validação de subsistemas, design de chicotes elétricos e programação de firmware. Conquistas: 2º lugar em design elétrico (Regional Sul 2019 e 2020), 11º lugar (Nacional 2020).
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="mb-12">
+            <h2 id="projects-title" class="text-2xl font-semibold text-gray-800 mb-4">Projetos</h2>
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-xl font-medium text-gray-800">Assistente Virtual Multimodal</h3>
+                    <p class="text-gray-600">
+                        Desenvolvi um assistente virtual com capacidades de reconhecimento de voz e texto, utilizando LangChain para processamento de linguagem natural e FastAPI para o backend. O frontend em JavaScript proporciona uma interface intuitiva para interação com o assistente.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-medium text-gray-800">Fechadura Eletrônica Inteligente</h3>
+                    <p class="text-gray-600">
+                        Criei uma fechadura eletrônica usando ESP-01 (ESP8266) com protocolo MQTT para controle remoto via aplicativo de smartphone, permitindo integração com assistentes e automação residencial.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-medium text-gray-800">Circuito Integrado TRNG</h3>
+                    <p class="text-gray-600">
+                        Desenvolvi um gerador de números aleatórios verdadeiros (HRNG) para criptografia, sintetizado com ferramentas Cadence, resultando em um circuito com 43 células lógicas e consumo de 11 µW.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-medium text-gray-800">Detector de Fake News</h3>
+                    <p class="text-gray-600">
+                        Sistema para identificar a veracidade de notícias usando processamento de texto e aprendizado de máquina, com modelos como Regressão Logística, KNN e Random Forest.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="mb-12">
+            <h2 id="skills-title" class="text-2xl font-semibold text-gray-800 mb-4">Habilidades Técnicas</h2>
+            <ul id="skills-list" class="text-gray-600 list-disc pl-6">
+                <li>Linguagens de Programação: Python, C, C++, Java, JavaScript, PHP, HTML/CSS</li>
+                <li>Design de Circuitos: Cadence, ADS, Altium Designer, Proteus</li>
+                <li>Modelagem 3D: SolidWorks, Fusion 360, Catia</li>
+                <li>Frameworks: OpenCV, FastAPI, LangChain</li>
+                <li>Bancos de Dados: SQL, integração com AWS</li>
+                <li>Outros: Desenvolvimento web, simulação de circuitos eletrônicos, comunicação interpessoal, gestão de tempo</li>
+            </ul>
+        </section>
+
+        <!-- CV Download Section -->
+        <section class="mb-12">
+            <h2 id="cv-title" class="text-2xl font-semibold text-gray-800 mb-4">Currículo</h2>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a id="cv-en" href="assets/cv-english.pdf" download class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300">
+                    Baixar CV (Inglês)
+                </a>
+                <a id="cv-pt" href="assets/cv-portuguese.pdf" download class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300">
+                    Baixar CV (Português)
+                </a>
+            </div>
+            <p class="text-gray-500 text-sm mt-4">*Certifique-se de que os arquivos de CV estejam no diretório 'assets/' do repositório.</p>
+        </section>
+
+        <!-- Links Section -->
+        <section class="mb-12">
+            <h2 id="links-title" class="text-2xl font-semibold text-gray-800 mb-4">Conecte-se Comigo</h2>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="http://lattes.cnpq.br/2911002601216607" target="_blank" class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition duration-300">
+                    Perfil Lattes
+                </a>
+                <a href="https://www.linkedin.com/in/leonardo-20-as" target="_blank" class="bg-blue-800 text-white px-6 py-3 rounded-lg hover:bg-blue-900 transition duration-300">
+                    Perfil LinkedIn
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="mb-12">
+            <h2 id="contact-title" class="text-2xl font-semibold text-gray-800 mb-4">Contato</h2>
+            <p id="contact-text" class="text-gray-600">
+                Email: <a href="mailto:leonardo_as29@hotmail.com" class="text-blue-600 hover:underline">leonardo_as29@hotmail.com</a><br>
+                Telefone: (41) 98826-7727
+            </p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-600">
+            <p id="footer-text">© 2025 Leonardo Santos. Todos os direitos reservados.</p>
+        </footer>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                title: "Leonardo Santos - Portfolio",
+                subtitle: "Electrical Engineer | Data Scientist | Software and Firmware Developer",
+                aboutTitle: "About Me",
+                aboutText: "I am Leonardo Santos, an electrical engineer with expertise in electrical projects, integrated circuit design, firmware, and software development. I have experience in digital signal processing, including modeling and implementing systems like Digital Phase-Limiters (DPL) for wireless communication and random number generators on FPGA. Currently, I work on software development for precision agriculture, focusing on storing and processing large datasets from agricultural equipment. My skills include Python, C, C++, Java, JavaScript, and more, along with 3D modeling, PCB design, and cloud platform integration with AWS.",
+                experienceTitle: "Professional Experience",
+                projectsTitle: "Projects",
+                skillsTitle: "Technical Skills",
+                skillsList: [
+                    "Programming Languages: Python, C, C++, Java, JavaScript, PHP, HTML/CSS",
+                    "Circuit Design: Cadence, ADS, Altium Designer, Proteus",
+                    "3D Modeling: SolidWorks, Fusion 360, Catia",
+                    "Frameworks: OpenCV, FastAPI, LangChain",
+                    "Databases: SQL, AWS integration",
+                    "Others: Web development, electronic circuit simulation, interpersonal communication, time management"
+                ],
+                cvTitle: "Curriculum Vitae",
+                cvEn: "Download CV (English)",
+                cvPt: "Download CV (Portuguese)",
+                cvEs: "Download CV (Spanish)",
+                linksTitle: "Connect With Me",
+                contactTitle: "Contact",
+                contactText: `Email: <a href="mailto:leonardo_as29@hotmail.com" class="text-blue-600 hover:underline">leonardo_as29@hotmail.com</a><br>Phone: (41) 98826-7727`,
+                footerText: "© 2025 Leonardo Santos. All rights reserved."
+            },
+            pt: {
+                title: "Portfólio de Leonardo Santos",
+                subtitle: "Engenheiro Eletricista | Cientista de Dados | Desenvolvedor de Software e Firmware",
+                aboutTitle: "Sobre Mim",
+                aboutText: "Sou Leonardo Santos, engenheiro eletricista com experiência em projetos elétricos, design de circuitos integrados, firmware e desenvolvimento de software. Tenho expertise em processamento de sinais digitais, incluindo modelagem e implementação de sistemas como limitadores de fase digital (DPL) para comunicação sem fio e geradores de números aleatórios em FPGA. Atualmente, trabalho com desenvolvimento de software para agricultura de precisão, focando no armazenamento e processamento de grandes bancos de dados de equipamentos agrícolas. Minha experiência abrange Python, C, C++, Java, JavaScript, entre outros, além de habilidades em modelagem 3D, design de PCBs e integração com plataformas de nuvem como AWS.",
+                experienceTitle: "Experiência Profissional",
+                projectsTitle: "Projetos",
+                skillsTitle: "Habilidades Técnicas",
+                skillsList: [
+                    "Linguagens de Programação: Python, C, C++, Java, JavaScript, PHP, HTML/CSS",
+                    "Design de Circuitos: Cadence, ADS, Altium Designer, Proteus",
+                    "Modelagem 3D: SolidWorks, Fusion 360, Catia",
+                    "Frameworks: OpenCV, FastAPI, LangChain",
+                    "Bancos de Dados: SQL, integração com AWS",
+                    "Outros: Desenvolvimento web, simulação de circuitos eletrônicos, comunicação interpessoal, gestão de tempo"
+                ],
+                cvTitle: "Currículo",
+                cvEn: "Baixar CV (Inglês)",
+                cvPt: "Baixar CV (Português)",
+                cvEs: "Baixar CV (Espanhol)",
+                linksTitle: "Conecte-se Comigo",
+                contactTitle: "Contato",
+                contactText: `Email: <a href="mailto:leonardo_as29@hotmail.com" class="text-blue-600 hover:underline">leonardo_as29@hotmail.com</a><br>Telefone: (41) 98826-7727`,
+                footerText: "© 2025 Leonardo Santos. Todos os direitos reservados."
+            },
+            es: {
+                title: "Portafolio de Leonardo Santos",
+                subtitle: "Ingeniero Eléctrico | Científico de Datos | Desarrollador de Software y Firmware",
+                aboutTitle: "Sobre Mí",
+                aboutText: "Soy Leonardo Santos, ingeniero eléctrico con experiencia en proyectos eléctricos, diseño de circuitos integrados, firmware y desarrollo de software. Tengo experiencia en procesamiento de señales digitales, incluyendo modelado e implementación de sistemas como limitadores de fase digital (DPL) para comunicación inalámbrica y generadores de números aleatorios en FPGA. Actualmente, trabajo en desarrollo de software para agricultura de precisión, enfocándome en el almacenamiento y procesamiento de grandes bases de datos de equipos agrícolas. Mis habilidades incluyen Python, C, C++, Java, JavaScript, entre otros, además de modelado 3D, diseño de PCBs e integración con plataformas en la nube como AWS.",
+                experienceTitle: "Experiencia Profesional",
+                projectsTitle: "Proyectos",
+                skillsTitle: "Habilidades Técnicas",
+                skillsList: [
+                    "Lenguajes de Programación: Python, C, C++, Java, JavaScript, PHP, HTML/CSS",
+                    "Diseño de Circuitos: Cadence, ADS, Altium Designer, Proteus",
+                    "Modelado 3D: SolidWorks, Fusion 360, Catia",
+                    "Frameworks: OpenCV, FastAPI, LangChain",
+                    "Bases de Datos: SQL, integración con AWS",
+                    "Otros: Desarrollo web, simulación de circuitos electrónicos, comunicación interpersonal, gestión de tiempo"
+                ],
+                cvTitle: "Currículum Vitae",
+                cvEn: "Descargar CV (Inglés)",
+                cvPt: "Descargar CV (Portugués)",
+                cvEs: "Descargar CV (Español)",
+                linksTitle: "Conéctate Conmigo",
+                contactTitle: "Contacto",
+                contactText: `Email: <a href="mailto:leonardo_as29@hotmail.com" class="text-blue-600 hover:underline">leonardo_as29@hotmail.com</a><br>Teléfono: (41) 98826-7727`,
+                footerText: "© 2025 Leonardo Santos. Todos los derechos reservados."
+            }
+        };
+
+        const languageSelect = document.getElementById('language-select');
+        languageSelect.addEventListener('change', (event) => {
+            const lang = event.target.value;
+            document.getElementById('title').textContent = translations[lang].title;
+            document.getElementById('subtitle').textContent = translations[lang].subtitle;
+            document.getElementById('about-title').textContent = translations[lang].aboutTitle;
+            document.getElementById('about-text').textContent = translations[lang].aboutText;
+            document.getElementById('experience-title').textContent = translations[lang].experienceTitle;
+            document.getElementById('projects-title').textContent = translations[lang].projectsTitle;
+            document.getElementById('skills-title').textContent = translations[lang].skillsTitle;
+            const skillsList = document.getElementById('skills-list');
+            skillsList.innerHTML = translations[lang].skillsList.map(item => `<li>${item}</li>`).join('');
+            document.getElementById('cv-title').textContent = translations[lang].cvTitle;
+            document.getElementById('cv-en').textContent = translations[lang].cvEn;
+            document.getElementById('cv-pt').textContent = translations[lang].cvPt;
+            document.getElementById('cv-es').textContent = translations[lang].cvEs;
+            document.getElementById('links-title').textContent = translations[lang].linksTitle;
+            document.getElementById('contact-title').textContent = translations[lang].contactTitle;
+            document.getElementById('contact-text').innerHTML = translations[lang].contactText;
+            document.getElementById('footer-text').textContent = translations[lang].footerText;
+            document.documentElement.lang = lang;
+        });
+
+        // Set default language to Portuguese
+        languageSelect.value = 'pt';
+        languageSelect.dispatchEvent(new Event('change'));
+    </script>
+</body>
+</html>
