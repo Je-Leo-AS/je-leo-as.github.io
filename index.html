@@ -1,255 +1,403 @@
-<!DOCTYPE html>
-<html lang="pt">
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leonardo Santos - Portfolio</title>
+    <title>Portfólio de Leonardo Santos</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 </head>
-<body class="bg-gray-100 font-sans">
-    <div class="container mx-auto px-4 py-8">
-        <!-- Language Toggle -->
-        <div class="flex justify-end mb-6">
-            <select id="language-select" class="bg-white border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600">
-                <option value="en">English</option>
-                <option value="pt" selected>Português</option>
-                <option value="es">Español</option>
-            </select>
+<body class="bg-gray-900 text-white font-sans">
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full bg-gray-800/80 backdrop-blur-md z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold">Leonardo Santos</div>
+            <div class="space-x-4">
+                <a href="#home" class="hover:text-blue-400 transition">Home</a>
+                <a href="#about" class="hover:text-blue-400 transition">Sobre</a>
+                <a href="#education" class="hover:text-blue-400 transition">Formação</a>
+                <a href="#experience" class="hover:text-blue-400 transition">Experiência</a>
+                <a href="#projects" class="hover:text-blue-400 transition">Projetos</a>
+                <a href="#contact" class="hover:text-blue-400 transition">Contato</a>
+                <select id="language" class="bg-gray-700 text-white p-1 rounded">
+                    <option value="en">English</option>
+                    <option value="pt" selected>Português</option>
+                    <option value="es">Español</option>
+                </select>
+            </div>
         </div>
+    </nav>
 
-        <!-- Header -->
-        <header class="text-center mb-12">
-            <h1 id="title" class="text-4xl font-bold text-gray-800">Portfólio de Leonardo Santos</h1>
-            <p id="subtitle" class="text-lg text-gray-600 mt-2">Engenheiro Eletricista | Cientista de Dados | Desenvolvedor de Software e Firmware</p>
-        </header>
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-900 to-gray-900">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4 animate-fade-in">Leonardo Santos</h1>
+            <p class="text-xl md:text-2xl mb-6" data-translate="hero_subtitle">Engenheiro Eletricista | Cientista de Dados | Desenvolvedor de Software</p>
+            <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-full transition" data-translate="contact_button">Entre em Contato</a>
+        </div>
+    </section>
 
-        <!-- About Section -->
-        <section class="mb-12">
-            <h2 id="about-title" class="text-2xl font-semibold text-gray-800 mb-4">Sobre Mim</h2>
-            <p id="about-text" class="text-gray-600">
-                Sou Leonardo Santos, engenheiro eletricista com experiência em projetos elétricos, design de circuitos integrados, firmware e desenvolvimento de software. Tenho expertise em processamento de sinais digitais, incluindo modelagem e implementação de sistemas como limitadores de fase digital (DPL) para comunicação sem fio e geradores de números aleatórios em FPGA. Atualmente, trabalho com desenvolvimento de software para agricultura de precisão, focando no armazenamento e processamento de grandes bancos de dados de equipamentos agrícolas. Minha experiência abrange Python, C, C++, Java, JavaScript, entre outros, além de habilidades em modelagem 3D, design de PCBs e integração com plataformas de nuvem como AWS.
-            </p>
-        </section>
-
-        <!-- Experience Section -->
-        <section class="mb-12">
-            <h2 id="experience-title" class="text-2xl font-semibold text-gray-800 mb-4">Experiência Profissional</h2>
-            <div class="space-y-6">
-                <div>
-                    <h3 class="text-xl font-medium text-gray-800">Pesquisador Científico - GICS, Curitiba, PR</h3>
-                    <p class="text-gray-500">Agosto 2021 - Dezembro 2022</p>
-                    <p class="text-gray-600">
-                        Desenvolvi um circuito integrado baseado em gerador de números aleatórios verdadeiros (TRNG) em FPGA, utilizando ferramentas Cadence. Modelei um pré-laboratório digital baseado em Memory Polymamid com Python para otimização de sistemas de processamento de sinais digitais, posteriormente implementado em hardware com ferramentas Xilinx.
-                    </p>
-                </div>
-                <div>
-                    <h3 class="text-xl font-medium text-gray-800">Estagiário de Engenharia - Curitiba, PR</h3>
-                    <p class="text-gray-500">Junho 2022 - Outubro 2022</p>
-                    <p class="text-gray-600">
-                        Auxiliei no desenvolvimento de um gerador de energia de ondas, implementando firmware em C e C++ para interfaces de terminais virtuais de máquinas agrícolas. Desenvolvi algoritmos de ciência de dados para dados espaciais e integração com plataformas de nuvem como AWS.
-                    </p>
-                </div>
-                <div>
-                    <h3 class="text-xl font-medium text-gray-800">Projeto de Extensão - Baja SAE</h3>
-                    <p class="text-gray-500">2019 - 2020</p>
-                    <p class="text-gray-600">
-                        Participei do desenvolvimento de um veículo off-road, focando no subsistema elétrico. Realizei testes, validação de subsistemas, design de chicotes elétricos e programação de firmware. Conquistas: 2º lugar em design elétrico (Regional Sul 2019 e 2020), 11º lugar (Nacional 2020).
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-8 text-center" data-translate="about_title">Sobre Mim</h2>
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="w-full md:w-2/3">
+                    <p class="text-lg" data-translate="about_text">
+                        Sou Leonardo Santos, engenheiro eletricista com expertise em projetos elétricos, design de circuitos integrados, firmware e desenvolvimento de software. Trabalho com processamento de sinais digitais, FPGA, e agricultura de precisão, utilizando Python, C, C++, Java, JavaScript, AWS e mais.
                     </p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Projects Section -->
-        <section class="mb-12">
-            <h2 id="projects-title" class="text-2xl font-semibold text-gray-800 mb-4">Projetos</h2>
-            <div class="space-y-6">
-                <div>
-                    <h3 class="text-xl font-medium text-gray-800">Assistente Virtual Multimodal</h3>
-                    <p class="text-gray-600">
-                        Desenvolvi um assistente virtual com capacidades de reconhecimento de voz e texto, utilizando LangChain para processamento de linguagem natural e FastAPI para o backend. O frontend em JavaScript proporciona uma interface intuitiva para interação com o assistente.
-                    </p>
+    <!-- Education Section -->
+    <section id="education" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-8 text-center" data-translate="education_title">Formação Acadêmica</h2>
+            <div class="space-y-8">
+                <div class="bg-gray-800 p-6 rounded-lg flex flex-col md:flex-row gap-6">
+                    <div class="w-full md:w-1/3 h-48">
+                        <img src="assets/imagens/ufpr.webp" alt="UFPR" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="w-full md:w-2/3">
+                        <h3 class="text-2xl font-semibold" data-translate="education_ufpr">Engenharia Elétrica - UFPR, Curitiba, PR</h3>
+                        <p class="text-gray-400">2017 - 2022</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="text-xl font-medium text-gray-800">Fechadura Eletrônica Inteligente</h3>
-                    <p class="text-gray-600">
-                        Criei uma fechadura eletrônica usando ESP-01 (ESP8266) com protocolo MQTT para controle remoto via aplicativo de smartphone, permitindo integração com assistentes e automação residencial.
-                    </p>
+                <div class="bg-gray-800 p-6 rounded-lg flex flex-col md:flex-row gap-6">
+                    <div class="w-full md:w-1/3 h-48">
+                        <img src="assets/imagens/GICS.webp" alt="Projeto GICS" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="w-full md:w-2/3">
+                        <h3 class="text-2xl font-semibold" data-translate="education_gics"><a href="https://gics.ufpr.br/" class="text-white hover:text-blue-400 transition">Pesquisador Científico - GICS, Curitiba, PR</a></h3>
+                        <p class="text-gray-400">08/2021 - 12/2024</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="text-xl font-medium text-gray-800">Circuito Integrado TRNG</h3>
-                    <p class="text-gray-600">
-                        Desenvolvi um gerador de números aleatórios verdadeiros (HRNG) para criptografia, sintetizado com ferramentas Cadence, resultando em um circuito com 43 células lógicas e consumo de 11 µW.
-                    </p>
+                <div class="bg-gray-800 p-6 rounded-lg flex flex-col md:flex-row gap-6">
+                    <div class="w-full md:w-1/3 h-48">
+                        <img src="assets/imagens/Lactec.webp" alt="Estágio" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="w-full md:w-2/3">
+                        <h3 class="text-2xl font-semibold" data-translate="education_internship">Estagiário de Engenharia - Curitiba, PR</h3>
+                        <p class="text-gray-400">06/2022 - 10/2022</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="text-xl font-medium text-gray-800">Detector de Fake News</h3>
-                    <p class="text-gray-600">
-                        Sistema para identificar a veracidade de notícias usando processamento de texto e aprendizado de máquina, com modelos como Regressão Logística, KNN e Random Forest.
-                    </p>
+                <div class="bg-gray-800 p-6 rounded-lg flex flex-col md:flex-row gap-6">
+                    <div class="w-full md:w-1/3 h-48">
+                        <img src="assets/imagens/BAJA.webp" alt="Baja SAE" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="w-full md:w-2/3">
+                        <h3 class="text-2xl font-semibold" data-translate="education_baja"><a href="https://insta.ufpr.br/projetos/baja-sae/" class="text-white hover:text-blue-400 transition">Projeto de Extensão - Baja SAE, UFPR</a></h3>
+                        <p class="text-gray-400">2019 - 2020</p>
+                    </div>
+                </div>
+                 <div class="bg-gray-800 p-6 rounded-lg flex flex-col md:flex-row gap-6">
+                    <div class="w-full md:w-1/3 h-48">
+                        <img src="assets/imagens/PET.webp" alt="PET" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="w-full md:w-2/3">
+                        <h3 class="text-2xl font-semibold" data-translate="education_PET"><a href="https://www.instagram.com/pet_eletrica/" class="text-white hover:text-blue-400 transition">Projeto de Extensão Tutorial - PET</a></h3>
+                        <p class="text-gray-400">2020 - 2023</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-8 text-center" data-translate="experience_title">Experiência Profissional</h2>
+            <div class="space-y-8">
+                <div class="bg-gray-800 p-6 rounded-lg flex flex-col md:flex-row gap-6">
+                    <div class="w-full md:w-1/3 h-48">
+                        <img src="assets/imagens/iotag.webp" alt="Projeto IOTAG" class="w-full h-full object-cover rounded-lg">
+                    </div>
+                    <div class="w-full md:w-2/3">
+                        <h3 class="text-2xl font-semibold" data-translate="experience_iotag">Desenvolvedor de Software - IOTAG, Curitiba, PR</h3>
+                        <p class="text-gray-400">Janeiro 2023 - Presente</p>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Skills Section -->
-        <section class="mb-12">
-            <h2 id="skills-title" class="text-2xl font-semibold text-gray-800 mb-4">Habilidades Técnicas</h2>
-            <ul id="skills-list" class="text-gray-600 list-disc pl-6">
-                <li>Linguagens de Programação: Python, C, C++, Java, JavaScript, PHP, HTML/CSS</li>
-                <li>Design de Circuitos: Cadence, ADS, Altium Designer, Proteus</li>
-                <li>Modelagem 3D: SolidWorks, Fusion 360, Catia</li>
-                <li>Frameworks: OpenCV, FastAPI, LangChain</li>
-                <li>Bancos de Dados: SQL, integração com AWS</li>
-                <li>Outros: Desenvolvimento web, simulação de circuitos eletrônicos, comunicação interpessoal, gestão de tempo</li>
-            </ul>
-        </section>
-
-        <!-- CV Download Section -->
-        <section class="mb-12">
-            <h2 id="cv-title" class="text-2xl font-semibold text-gray-800 mb-4">Currículo</h2>
-            <div class="flex flex-col sm:flex-row gap-4">
-                <a id="cv-en" href="assets/cv-english.pdf" download class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300">
-                    Baixar CV (Inglês)
-                </a>
-                <a id="cv-pt" href="assets/cv-portuguese.pdf" download class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300">
-                    Baixar CV (Português)
-                </a>
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-8 text-center" data-translate="projects_title">Projetos</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold" data-translate="project_assistant">Assistente Virtual Multimodal</h3>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold" data-translate="project_lock">Fechadura Eletrônica Inteligente</h3>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold" data-translate="project_trng">Circuito Integrado TRNG</h3>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold" data-translate="project_fake_news">Detector de Fake News</h3>
+                </div>
             </div>
-            <p class="text-gray-500 text-sm mt-4">*Certifique-se de que os arquivos de CV estejam no diretório 'assets/' do repositório.</p>
-        </section>
-
-        <!-- Links Section -->
-        <section class="mb-12">
-            <h2 id="links-title" class="text-2xl font-semibold text-gray-800 mb-4">Conecte-se Comigo</h2>
-            <div class="flex flex-col sm:flex-row gap-4">
-                <a href="http://lattes.cnpq.br/2911002601216607" target="_blank" class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition duration-300">
-                    Perfil Lattes
-                </a>
-                <a href="https://www.linkedin.com/in/leonardo-20-as" target="_blank" class="bg-blue-800 text-white px-6 py-3 rounded-lg hover:bg-blue-900 transition duration-300">
-                    Perfil LinkedIn
-                </a>
+            <div class="text-center mt-8">
+                <p class="text-lg" data-translate="projects_invite">Quer saber mais sobre meus projetos? Visite meu <a href="#" class="text-blue-400 hover:underline">LinkedIn</a> e <a href="#" class="text-blue-400 hover:underline">Lattes</a>!</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Contact Section -->
-        <section class="mb-12">
-            <h2 id="contact-title" class="text-2xl font-semibold text-gray-800 mb-4">Contato</h2>
-            <p id="contact-text" class="text-gray-600">
-                Email: <a href="mailto:leonardo_as29@hotmail.com" class="text-blue-600 hover:underline">leonardo_as29@hotmail.com</a><br>
-                Telefone: (41) 98826-7727
-            </p>
-        </section>
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-8 text-center" data-translate="skills_title">Habilidades Técnicas</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-gray-800 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold" data-translate="skills_programming">Linguagens de Programação</h3>
+                    <p data-translate="skills_programming_list">Python, C, C++, Java, JavaScript, HTML/CSS</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold" data-translate="skills_circuits">Design de Circuitos</h3>
+                    <p data-translate="skills_circuits_list">Cadence, ADS, Altium Designer, Proteus</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold" data-translate="skills_3d">Modelagem 3D</h3>
+                    <p data-translate="skills_3d_list">SolidWorks, Fusion 360, Catia</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold" data-translate="skills_frameworks">Frameworks</h3>
+                    <p data-translate="skills_frameworks_list">OpenCV, FastAPI, LangChain</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold" data-translate="skills_databases">Bancos de Dados</h3>
+                    <p data-translate="skills_databases_list">SQL, integração com AWS</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold" data-translate="skills_others">Outros</h3>
+                    <p data-translate="skills_others_list">Desenvolvimento web, simulação de circuitos, comunicação, gestão de tempo</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <!-- Footer -->
-        <footer class="text-center text-gray-600">
-            <p id="footer-text">© 2025 Leonardo Santos. Todos os direitos reservados.</p>
-        </footer>
-    </div>
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-8" data-translate="contact_title">Conecte-se Comigo</h2>
+            <div class="flex justify-center gap-4 mb-6">
+                <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-full" data-translate="contact_lattes">Perfil Lattes</a>
+                <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-full" data-translate="contact_linkedin">Perfil LinkedIn</a>
+            </div>
+            <p class="text-lg mb-2">Email: <a href="mailto:leonardo_as20@hotmail.com" class="text-blue-400">leonardo_as20@hotmail.com</a></p>
+            <p class="text-lg" data-translate="contact_phone">Telefone: (41) 98826-7727</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-6 bg-gray-900 text-center">
+        <p data-translate="footer">© 2025 Leonardo Santos. Todos os direitos reservados.</p>
+    </footer>
 
     <script>
+        // GSAP Animations
+        gsap.from(".animate-fade-in", { opacity: 0, y: 50, duration: 1, stagger: 0.2 });
+
+        // Objeto com traduções
         const translations = {
             en: {
-                title: "Leonardo Santos - Portfolio",
-                subtitle: "Electrical Engineer | Data Scientist | Software and Firmware Developer",
-                aboutTitle: "About Me",
-                aboutText: "I am Leonardo Santos, an electrical engineer with expertise in electrical projects, integrated circuit design, firmware, and software development. I have experience in digital signal processing, including modeling and implementing systems like Digital Phase-Limiters (DPL) for wireless communication and random number generators on FPGA. Currently, I work on software development for precision agriculture, focusing on storing and processing large datasets from agricultural equipment. My skills include Python, C, C++, Java, JavaScript, and more, along with 3D modeling, PCB design, and cloud platform integration with AWS.",
-                experienceTitle: "Professional Experience",
-                projectsTitle: "Projects",
-                skillsTitle: "Technical Skills",
-                skillsList: [
-                    "Programming Languages: Python, C, C++, Java, JavaScript, PHP, HTML/CSS",
-                    "Circuit Design: Cadence, ADS, Altium Designer, Proteus",
-                    "3D Modeling: SolidWorks, Fusion 360, Catia",
-                    "Frameworks: OpenCV, FastAPI, LangChain",
-                    "Databases: SQL, AWS integration",
-                    "Others: Web development, electronic circuit simulation, interpersonal communication, time management"
-                ],
-                cvTitle: "Curriculum Vitae",
-                cvEn: "Download CV (English)",
-                cvPt: "Download CV (Portuguese)",
-                cvEs: "Download CV (Spanish)",
-                linksTitle: "Connect With Me",
-                contactTitle: "Contact",
-                contactText: `Email: <a href="mailto:leonardo_as29@hotmail.com" class="text-blue-600 hover:underline">leonardo_as29@hotmail.com</a><br>Phone: (41) 98826-7727`,
-                footerText: "© 2025 Leonardo Santos. All rights reserved."
+                home: "Home",
+                about: "About",
+                education: "Education",
+                experience: "Experience",
+                projects: "Projects",
+                contact: "Contact",
+                hero_subtitle: "Electrical Engineer | Data Scientist | Software Developer",
+                contact_button: "Get in Touch",
+                about_title: "About Me",
+                about_text: "I am Leonardo Santos, an electrical engineer with expertise in electrical projects, integrated circuit design, firmware, and software development. I work with digital signal processing, FPGA, and precision agriculture, using Python, C, C++, Java, JavaScript, AWS, and more.",
+                education_title: "Academic Background",
+                education_ufpr: "Electrical Engineering - UFPR, Curitiba, PR",
+                education_gics: "Scientific Researcher - GICS, Curitiba, PR",
+                education_internship: "Engineering Intern - Curitiba, PR",
+                education_baja: "Extension Project - Baja SAE, UFPR",
+                education_PET: "Extension Project - PET, UFPR",
+                experience_title: "Professional Experience",
+                experience_iotag: "Software Developer - IOTAG, Curitiba, PR",
+                projects_title: "Projects",
+                project_assistant: "Multimodal Virtual Assistant",
+                project_lock: "Smart Electronic Lock",
+                project_trng: "TRNG Integrated Circuit",
+                project_fake_news: "Fake News Detector",
+                projects_invite: "Want to know more about my projects? Visit my <a href='#' class='text-blue-400 hover:underline'>LinkedIn</a> and <a href='#' class='text-blue-400 hover:underline'>Lattes</a>!",
+                skills_title: "Technical Skills",
+                skills_programming: "Programming Languages",
+                skills_programming_list: "Python, C, C++, Java, JavaScript, HTML/CSS",
+                skills_circuits: "Circuit Design",
+                skills_circuits_list: "Cadence, ADS, Altium Designer, Proteus",
+                skills_3d: "3D Modeling",
+                skills_3d_list: "SolidWorks, Fusion 360, Catia",
+                skills_frameworks: "Frameworks",
+                skills_frameworks_list: "OpenCV, FastAPI, LangChain",
+                skills_databases: "Databases",
+                skills_databases_list: "SQL, AWS integration",
+                skills_others: "Others",
+                skills_others_list: "Web development, circuit simulation, communication, time management",
+                contact_title: "Connect with Me",
+                contact_lattes: "Lattes Profile",
+                contact_linkedin: "LinkedIn Profile",
+                contact_phone: "Phone: (41) 98826-7727",
+                footer: "© 2025 Leonardo Santos. All rights reserved."
             },
             pt: {
-                title: "Portfólio de Leonardo Santos",
-                subtitle: "Engenheiro Eletricista | Cientista de Dados | Desenvolvedor de Software e Firmware",
-                aboutTitle: "Sobre Mim",
-                aboutText: "Sou Leonardo Santos, engenheiro eletricista com experiência em projetos elétricos, design de circuitos integrados, firmware e desenvolvimento de software. Tenho expertise em processamento de sinais digitais, incluindo modelagem e implementação de sistemas como limitadores de fase digital (DPL) para comunicação sem fio e geradores de números aleatórios em FPGA. Atualmente, trabalho com desenvolvimento de software para agricultura de precisão, focando no armazenamento e processamento de grandes bancos de dados de equipamentos agrícolas. Minha experiência abrange Python, C, C++, Java, JavaScript, entre outros, além de habilidades em modelagem 3D, design de PCBs e integração com plataformas de nuvem como AWS.",
-                experienceTitle: "Experiência Profissional",
-                projectsTitle: "Projetos",
-                skillsTitle: "Habilidades Técnicas",
-                skillsList: [
-                    "Linguagens de Programação: Python, C, C++, Java, JavaScript, PHP, HTML/CSS",
-                    "Design de Circuitos: Cadence, ADS, Altium Designer, Proteus",
-                    "Modelagem 3D: SolidWorks, Fusion 360, Catia",
-                    "Frameworks: OpenCV, FastAPI, LangChain",
-                    "Bancos de Dados: SQL, integração com AWS",
-                    "Outros: Desenvolvimento web, simulação de circuitos eletrônicos, comunicação interpessoal, gestão de tempo"
-                ],
-                cvTitle: "Currículo",
-                cvEn: "Baixar CV (Inglês)",
-                cvPt: "Baixar CV (Português)",
-                cvEs: "Baixar CV (Espanhol)",
-                linksTitle: "Conecte-se Comigo",
-                contactTitle: "Contato",
-                contactText: `Email: <a href="mailto:leonardo_as29@hotmail.com" class="text-blue-600 hover:underline">leonardo_as29@hotmail.com</a><br>Telefone: (41) 98826-7727`,
-                footerText: "© 2025 Leonardo Santos. Todos os direitos reservados."
+                home: "Home",
+                about: "Sobre",
+                education: "Formação",
+                experience: "Experiência",
+                projects: "Projetos",
+                contact: "Contato",
+                hero_subtitle: "Engenheiro Eletricista | Cientista de Dados | Desenvolvedor de Software",
+                contact_button: "Entre em Contato",
+                about_title: "Sobre Mim",
+                about_text: "Sou Leonardo Santos, engenheiro eletricista com expertise em projetos elétricos, design de circuitos integrados, firmware e desenvolvimento de software. Trabalho com processamento de sinais digitais, FPGA, e agricultura de precisão, utilizando Python, C, C++, Java, JavaScript, AWS e mais.",
+                education_title: "Formação Acadêmica",
+                education_ufpr: "Engenharia Elétrica - UFPR, Curitiba, PR",
+                education_gics: "Pesquisador Científico - GICS, Curitiba, PR",
+                education_internship: "Estagiário de Engenharia - Curitiba, PR",
+                education_PET: "Projeto de Extensão Tutorial - PET, UFPR",
+                experience_title: "Experiência Profissional",
+                experience_iotag: "Desenvolvedor de Software - IOTAG, Curitiba, PR",
+                projects_title: "Projetos",
+                project_assistant: "Assistente Virtual Multimodal",
+                project_lock: "Fechadura Eletrônica Inteligente",
+                project_trng: "Circuito Integrado TRNG",
+                project_fake_news: "Detector de Fake News",
+                projects_invite: "Quer saber mais sobre meus projetos? Visite meu <a href='#' class='text-blue-400 hover:underline'>LinkedIn</a> e <a href='#' class='text-blue-400 hover:underline'>Lattes</a>!",
+                skills_title: "Habilidades Técnicas",
+                skills_programming: "Linguagens de Programação",
+                skills_programming_list: "Python, C, C++, Java, JavaScript, HTML/CSS",
+                skills_circuits: "Design de Circuitos",
+                skills_circuits_list: "Cadence, ADS, Altium Designer, Proteus",
+                skills_3d: "Modelagem 3D",
+                skills_3d_list: "SolidWorks, Fusion 360, Catia",
+                skills_frameworks: "Frameworks",
+                skills_frameworks_list: "OpenCV, FastAPI, LangChain",
+                skills_databases: "Bancos de Dados",
+                skills_databases_list: "SQL, integração com AWS",
+                skills_others: "Outros",
+                skills_others_list: "Desenvolvimento web, simulação de circuitos, comunicação, gestão de tempo",
+                contact_title: "Conecte-se Comigo",
+                contact_lattes: "Perfil Lattes",
+                contact_linkedin: "Perfil LinkedIn",
+                contact_phone: "Telefone: (41) 98826-7727",
+                footer: "© 2025 Leonardo Santos. Todos os direitos reservados."
             },
             es: {
-                title: "Portafolio de Leonardo Santos",
-                subtitle: "Ingeniero Eléctrico | Científico de Datos | Desarrollador de Software y Firmware",
-                aboutTitle: "Sobre Mí",
-                aboutText: "Soy Leonardo Santos, ingeniero eléctrico con experiencia en proyectos eléctricos, diseño de circuitos integrados, firmware y desarrollo de software. Tengo experiencia en procesamiento de señales digitales, incluyendo modelado e implementación de sistemas como limitadores de fase digital (DPL) para comunicación inalámbrica y generadores de números aleatorios en FPGA. Actualmente, trabajo en desarrollo de software para agricultura de precisión, enfocándome en el almacenamiento y procesamiento de grandes bases de datos de equipos agrícolas. Mis habilidades incluyen Python, C, C++, Java, JavaScript, entre otros, además de modelado 3D, diseño de PCBs e integración con plataformas en la nube como AWS.",
-                experienceTitle: "Experiencia Profesional",
-                projectsTitle: "Proyectos",
-                skillsTitle: "Habilidades Técnicas",
-                skillsList: [
-                    "Lenguajes de Programación: Python, C, C++, Java, JavaScript, PHP, HTML/CSS",
-                    "Diseño de Circuitos: Cadence, ADS, Altium Designer, Proteus",
-                    "Modelado 3D: SolidWorks, Fusion 360, Catia",
-                    "Frameworks: OpenCV, FastAPI, LangChain",
-                    "Bases de Datos: SQL, integración con AWS",
-                    "Otros: Desarrollo web, simulación de circuitos electrónicos, comunicación interpersonal, gestión de tiempo"
-                ],
-                cvTitle: "Currículum Vitae",
-                cvEn: "Descargar CV (Inglés)",
-                cvPt: "Descargar CV (Portugués)",
-                cvEs: "Descargar CV (Español)",
-                linksTitle: "Conéctate Conmigo",
-                contactTitle: "Contacto",
-                contactText: `Email: <a href="mailto:leonardo_as29@hotmail.com" class="text-blue-600 hover:underline">leonardo_as29@hotmail.com</a><br>Teléfono: (41) 98826-7727`,
-                footerText: "© 2025 Leonardo Santos. Todos los derechos reservados."
+                home: "Inicio",
+                about: "Sobre Mí",
+                education: "Formación",
+                experience: "Experiencia",
+                projects: "Proyectos",
+                contact: "Contacto",
+                hero_subtitle: "Ingeniero Eléctrico | Científico de Datos | Desarrollador de Software",
+                contact_button: "Contactar",
+                about_title: "Sobre Mí",
+                about_text: "Soy Leonardo Santos, ingeniero eléctrico con experiencia en proyectos eléctricos, diseño de circuitos integrados, firmware y desarrollo de software. Trabajo con procesamiento de señales digitales, FPGA y agricultura de precisión, utilizando Python, C, C++, Java, JavaScript, AWS y más.",
+                education_title: "Formación Académica",
+                education_ufpr: "Ingeniería Eléctrica - UFPR, Curitiba, PR",
+                education_gics: "Investigador Científico - GICS, Curitiba, PR",
+                education_internship: "Pasante de Ingeniería - Curitiba, PR",
+                education_baja: "Proyecto de Extensión - Baja SAE, UFPR",
+                education_PET: "Proyecto de Extensión Tutorial - PET, UFPR",
+                experience_title: "Experiencia Profesional",
+                experience_iotag: "Desarrollador de Software - IOTAG, Curitiba, PR",
+                projects_title: "Proyectos",
+                project_assistant: "Asistente Virtual Multimodal",
+                project_lock: "Cerradura Electrónica Inteligente",
+                project_trng: "Circuito Integrado TRNG",
+                project_fake_news: "Detector de Noticias Falsas",
+                projects_invite: "¿Quieres saber más sobre mis proyectos? ¡Visita mi <a href='#' class='text-blue-400 hover:underline'>LinkedIn</a> y <a href='#' class='text-blue-400 hover:underline'>Lattes</a>!",
+                skills_title: "Habilidades Técnicas",
+                skills_programming: "Lenguajes de Programación",
+                skills_programming_list: "Python, C, C++, Java, JavaScript, HTML/CSS",
+                skills_circuits: "Diseño de Circuitos",
+                skills_circuits_list: "Cadence, ADS, Altium Designer, Proteus",
+                skills_3d: "Modelado 3D",
+                skills_3d_list: "SolidWorks, Fusion 360, Catia",
+                skills_frameworks: "Frameworks",
+                skills_frameworks_list: "OpenCV, FastAPI, LangChain",
+                skills_databases: "Bases de Datos",
+                skills_databases_list: "SQL, integración con AWS",
+                skills_others: "Otros",
+                skills_others_list: "Desarrollo web, simulación de circuitos, comunicación, gestión del tiempo",
+                contact_title: "Conéctate Conmigo",
+                contact_lattes: "Perfil Lattes",
+                contact_linkedin: "Perfil LinkedIn",
+                contact_phone: "Teléfono: (41) 98826-7727",
+                footer: "© 2025 Leonardo Santos. Todos los derechos reservados."
             }
         };
 
-        const languageSelect = document.getElementById('language-select');
-        languageSelect.addEventListener('change', (event) => {
-            const lang = event.target.value;
-            document.getElementById('title').textContent = translations[lang].title;
-            document.getElementById('subtitle').textContent = translations[lang].subtitle;
-            document.getElementById('about-title').textContent = translations[lang].aboutTitle;
-            document.getElementById('about-text').textContent = translations[lang].aboutText;
-            document.getElementById('experience-title').textContent = translations[lang].experienceTitle;
-            document.getElementById('projects-title').textContent = translations[lang].projectsTitle;
-            document.getElementById('skills-title').textContent = translations[lang].skillsTitle;
-            const skillsList = document.getElementById('skills-list');
-            skillsList.innerHTML = translations[lang].skillsList.map(item => `<li>${item}</li>`).join('');
-            document.getElementById('cv-title').textContent = translations[lang].cvTitle;
-            document.getElementById('cv-en').textContent = translations[lang].cvEn;
-            document.getElementById('cv-pt').textContent = translations[lang].cvPt;
-            document.getElementById('cv-es').textContent = translations[lang].cvEs;
-            document.getElementById('links-title').textContent = translations[lang].linksTitle;
-            document.getElementById('contact-title').textContent = translations[lang].contactTitle;
-            document.getElementById('contact-text').innerHTML = translations[lang].contactText;
-            document.getElementById('footer-text').textContent = translations[lang].footerText;
-            document.documentElement.lang = lang;
+        // Função para atualizar o conteúdo da página
+        function updateLanguage(lang) {
+            // Atualizar todos os elementos com o atributo data-translate
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang][key]) {
+                    if (element.tagName === 'A' || element.tagName === 'P' && key === 'projects_invite') {
+                        element.innerHTML = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+        }
+
+        // Language Switcher
+        document.getElementById("language").addEventListener("change", function() {
+            const lang = this.value;
+            updateLanguage(lang);
         });
 
-        // Set default language to Portuguese
-        languageSelect.value = 'pt';
-        languageSelect.dispatchEvent(new Event('change'));
+        // Carregar idioma padrão (português) ao iniciar
+        updateLanguage('pt');
     </script>
-</body>
-</html>
