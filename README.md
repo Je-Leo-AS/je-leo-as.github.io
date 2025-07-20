@@ -32,6 +32,6 @@ O portfólio pode ser visualizado em:
 
 ## Contato
 
-- Email: leonardo_as29@hotmail.com
+- Email: leonardo_as20@hotmail.com
 - [LinkedIn](https://www.linkedin.com/in/leonardo-20-as)
 - [Lattes](http://lattes.cnpq.br/2911002601216607)
