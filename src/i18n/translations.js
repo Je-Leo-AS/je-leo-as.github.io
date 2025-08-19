@@ -1,24 +1,25 @@
-const GLOBAL_VARS = {
-   linkedInUrl: "https://www.linkedin.com/in/leonardo-20-as/",
-   lattesUrl: "https://lattes.cnpq.br/2911002601216607"
+
+export const GLOBAL_VARS = {
+  linkedInUrl: "https://www.linkedin.com/in/leonardo-20-as/",
+  lattesUrl: "https://lattes.cnpq.br/2911002601216607",
 };
 
-const translations = {
+export const translations = {
   en: {
     home: "Home",
     about: "About",
+    tools : "Tools & Languages",
     education: "Education",
     experience: "Experience",
     projects: "Projects",
     contact: "Contact",
-    hero_subtitle: "Electrical Engineer | Data Scientist | Software Developer",
+    hero_subtitle: "Embedded Systems Engineer, Firmware, IoT & Data Science",
     contact_button: "Get in Touch",
     about_title: "About Me",
     about_text:
-      "I am Leonardo Santos, an electrical engineer with expertise in electrical projects, integrated circuit design, firmware, and software development. I work with digital signal processing, FPGA, and precision agriculture, using Python, C, C++, Java, JavaScript, AWS, and more.",
+      "I am Leonardo Santos, an electrical engineer passionate about technology and innovation. My journey blends academic, professional, and personal projects. During my undergraduate studies, I served as a teaching assistant for Digital Electronics and Microelectronics, taught a Python course for Chemical Engineering students, and organized the Electrical Engineering Academic Update Week (Seatel). In the Tutorial Education Program (PET), I led projects like IoPET (IoT and firmware), BigPET (machine learning), and PET3D (3D design and printing). I contributed to an off-road vehicle project, developing its electrical subsystem, achieving 1st place in the electrical project at Regional Sul 2019, 11th place nationally at Baja SAE 2020, and 2nd place at Regional South 2020. Currently, I develop firmware in C and C++ for agricultural machinery, optimize spatial data analysis with data science algorithms, and integrate back-end and front-end systems. In my personal projects, I built a home server with Proxmox, Tailscale VPN, and virtual machines running OpenWebUI, TrueNAS, and other services for AI and secure storage. Check out my portfolio to learn more!",
     education_title: "Academic Background",
     education_ufpr: "Electrical Engineering - UFPR, Curitiba, PR",
-    education_bachelor_description : "",
     education_gics: "Scientific Researcher - GICS, Curitiba, PR",
     education_internship: "Engineering Intern - Curitiba, PR",
     education_baja: "Extension Project - Baja SAE, UFPR",
@@ -27,11 +28,19 @@ const translations = {
     experience_iotag: "Software Developer - IOTAG, Curitiba, PR",
     projects_title: "Projects",
     project_assistant: "Multimodal Virtual Assistant",
+    project_assistant_description : "A virtual assistant that understands and processes multiple forms of input, including text, voice, and gestures.",
     project_lock: "Smart Electronic Lock",
+    project_lock_description: "A smart lock system that enhances security and convenience through mobile app integration.",
     project_trng: "TRNG Integrated Circuit",
+    project_trng_description: "A True Random Number Generator (TRNG) integrated circuit designed for secure applications.",
     project_fake_news: "Fake News Detector",
+    project_fake_news_description: "An AI-powered tool that identifies and flags potential fake news articles.",
     projects_invite:
-      'Want to know more about my projects? Visit my <a href="' + GLOBAL_VARS.LinkedinUrl + '" class="text-blue-400 hover:underline">LinkedIn</a> and <a href="' + GLOBAL_VARS.LattesUrl + '" class="text-blue-400 hover:underline">Lattes</a>!',
+      'Want to know more about my projects? Visit my <a href="' +
+      GLOBAL_VARS.LinkedinUrl +
+      '" class="text-blue-400 hover:underline">LinkedIn</a> and <a href="' +
+      GLOBAL_VARS.LattesUrl +
+      '" class="text-blue-400 hover:underline">Lattes</a>!',
     skills_title: "Technical Skills",
     skills_programming: "Programming Languages",
     skills_programming_list: "Python, C, C++, Java, JavaScript, HTML/CSS",
@@ -65,18 +74,18 @@ const translations = {
   pt: {
     home: "Home",
     about: "Sobre",
+    tools : "Ferramentas & Linguagens",
     education: "Formação",
     experience: "Experiência",
     projects: "Projetos",
     contact: "Contato",
-    hero_subtitle: "Engenheiro Eletricista | Cientista de Dados | Desenvolvedor de Software",
+    hero_subtitle:"Engenheiro de Sistemas Embarcados, Firmware, IoT e Ciência de Dados",
     contact_button: "Entre em Contato",
     about_title: "Sobre Mim",
     about_text:
-      "Sou Leonardo Santos, engenheiro eletricista com expertise em projetos elétricos, design de circuitos integrados, firmware e desenvolvimento de software. Trabalho com processamento de sinais digitais, FPGA, e agricultura de precisão, utilizando Python, C, C++, Java, JavaScript, AWS e mais.",
+      "Sou Leonardo Santos, um engenheiro elétrico apaixonado por tecnologia e inovação. Minha trajetória combina experiências acadêmicas, profissionais e projetos pessoais desafiadores. Durante a graduação, fui monitor de Eletrônica Digital e Microeletrônica, auxiliei em um curso de Python para Engenharia Química e organizei a Semana de Atualização Acadêmica de Engenharia Elétrica (Seatel). No Programa de Educação Tutorial (PET), liderei projetos como IoPET (IoT e firmware), BigPET (machine learning) e PET3D (design e impressão 3D). Participei de um projeto de veículo off-road, desenvolvendo o subsistema elétrico, com conquistas como 1º lugar no projeto elétrico no Regional Sul 2019, 11º lugar nacional no Baja SAE 2020 e 2º lugar no Regional Sul 2020. Atualmente, desenvolvo firmware em C e C++ para máquinas agrícolas, otimizo análises de dados espaciais com algoritmos de ciência de dados e integro sistemas back-end e front-end. Nos meus projetos pessoais, construí um servidor caseiro com Proxmox, Tailscale VPN e máquinas virtuais rodando OpenWebUI, TrueNAS e outros serviços para IA e armazenamento seguro. Explore meu portfólio para saber mais!",
     education_title: "Formação Acadêmica",
     education_ufpr: "Engenharia Elétrica - UFPR, Curitiba, PR",
-    education_bachelor_description : "",
     education_gics: "Pesquisador Científico - GICS, Curitiba, PR",
     education_internship: "Estagiário de Engenharia - Curitiba, PR",
     education_baja: "Projeto de Extensão - Baja SAE, UFPR",
@@ -85,9 +94,13 @@ const translations = {
     experience_iotag: "Desenvolvedor de Software - IOTAG, Curitiba, PR",
     projects_title: "Projetos",
     project_assistant: "Assistente Virtual Multimodal",
+    project_assistant_description: "Um assistente virtual que entende e processa múltiplas formas de entrada, incluindo texto, voz e gestos.",
     project_lock: "Fechadura Eletrônica Inteligente",
+    project_lock_description: "Um sistema de fechadura inteligente que melhora a segurança e a conveniência através da integração com aplicativos móveis.",
     project_trng: "Circuito Integrado TRNG",
+    project_trng_description: "Um circuito integrado de Gerador de Números Aleatórios Verdadeiros (TRNG) projetado para aplicações seguras.",
     project_fake_news: "Detector de Fake News",
+    project_fake_news_description: "Uma ferramenta alimentada por IA que identifica e sinaliza potenciais artigos de fake news.",
     projects_invite:
       "Quer saber mais sobre meus projetos? Visite meu <a href='" +
       GLOBAL_VARS.LinkedinUrl +
@@ -128,15 +141,14 @@ const translations = {
     home: "Inicio",
     about: "Sobre Mí",
     education: "Formación",
+    tools : "Herramientas & Lenguajes",
     experience: "Experiencia",
     projects: "Proyectos",
     contact: "Contacto",
-    hero_subtitle:
-      "Ingeniero Eléctrico | Científico de Datos | Desarrollador de Software",
+    hero_subtitle:"Ingeniero Eléctrico | Científico de Datos | Desarrollador de Software",
     contact_button: "Contactar",
     about_title: "Sobre Mí",
-    about_text:
-      "Soy Leonardo Santos, ingeniero eléctrico con experiencia en proyectos eléctricos, diseño de circuitos integrados, firmware y desarrollo de software. Trabajo con procesamiento de señales digitales, FPGA y agricultura de precisión, utilizando Python, C, C++, Java, JavaScript, AWS y más.",
+    about_text:"Soy Leonardo Santos, un ingeniero eléctrico apasionado por la tecnología y la innovación. Mi trayectoria combina experiencias académicas, profesionales y proyectos personales desafiantes. Durante mi carrera universitaria, fui asistente de enseñanza en Electrónica Digital y Microelectrónica, impartí un curso de Python para estudiantes de Ingeniería Química y organicé la Semana de Actualización Académica de Ingeniería Eléctrica (Seatel). En el Programa de Educación Tutorial (PET), lideré proyectos como IoPET (IoT y firmware), BigPET (machine learning) y PET3D (diseño e impresión 3D). Participé en un proyecto de vehículo todoterreno, desarrollando el subsistema eléctrico, logrando el 1er lugar en el proyecto eléctrico en el Regional Sur 2019, el 11º lugar nacional en el Baja SAE 2020 y el 2º lugar en el Regional Sur 2020. Actualmente, desarrollo firmware en C y C++ para maquinaria agrícola, optimizo análisis de datos espaciales con algoritmos de ciencia de datos e integro sistemas back-end y front-end. En mis proyectos personales, construí un servidor doméstico con Proxmox, VPN Tailscale y máquinas virtuales con OpenWebUI, TrueNAS y otros servicios para IA y almacenamiento seguro. ¡Explora mi portafolio para saber más!",
     education_title: "Formación Académica",
     education_ufpr: "Ingeniería Eléctrica - UFPR, Curitiba, PR",
     education_gics: "Investigador Científico - GICS, Curitiba, PR",
@@ -147,9 +159,13 @@ const translations = {
     experience_iotag: "Desarrollador de Software - IOTAG, Curitiba, PR",
     projects_title: "Proyectos",
     project_assistant: "Asistente Virtual Multimodal",
+    project_assistant_description: "Un asistente virtual que entiende y procesa múltiples formas de entrada, incluyendo texto, voz y gestos.",
     project_lock: "Cerradura Electrónica Inteligente",
+    project_lock_description: "Un sistema de cerradura inteligente que mejora la seguridad y la conveniencia a través de la integración con aplicaciones móviles.",
     project_trng: "Circuito Integrado TRNG",
+    project_trng_description: "Un circuito integrado de Generador de Números Aleatorios Verdaderos (TRNG) diseñado para aplicaciones seguras.",
     project_fake_news: "Detector de Noticias Falsas",
+    project_fake_news_description: "Una herramienta impulsada por IA que identifica y señala artículos potenciales de noticias falsas.",
     projects_invite:
       "¿Quieres saber más sobre mis proyectos? ¡Visita mi <a href='" +
       GLOBAL_VARS.LinkedinUrl +
