@@ -121,8 +121,9 @@
 }
 
 .education-image {
-    max-width: 100px;
-    height: auto;
+    object-fit: cover;
+    width: auto;
+    height: 200px;
     border-radius: 4px;
     margin-left: 1.5rem;
 }
