@@ -6,10 +6,10 @@
 
       <!-- Links -->
       <div class="nav-links">
-        <a href="/" class="nav-link">{{ t('nav_home') }}</a>
-        <a href="academic" class="nav-link">{{ t('nav_education') }}</a>
-        <a href="experiences" class="nav-link">{{ t('nav_experience') }}</a>
-        <a href="projects" class="nav-link">{{ t('nav_projects') }}</a>
+        <a router-link="/" class="nav-link">{{ t('nav_home') }}</a>
+        <a router-link="/academic" class="nav-link">{{ t('nav_education') }}</a>
+        <a router-link="/experiences" class="nav-link">{{ t('nav_experience') }}</a>
+        <a router-link="/projects" class="nav-link">{{ t('nav_projects') }}</a>
         <a href="#contact" class="nav-link">{{ t('nav_contact') }}</a>
       </div>
 
