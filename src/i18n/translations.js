@@ -2,6 +2,8 @@
 export const GLOBAL_VARS = {
   linkedInUrl: "https://www.linkedin.com/in/leonardo-20-as/",
   lattesUrl: "https://lattes.cnpq.br/2911002601216607",
+  dpdUrl: "https://jpm.ufpr.br/wp-content/uploads/2024/12/15.pdf",
+  trngUrl: "https://jpm.ufpr.br/wp-content/uploads/2024/12/15.pdf",
 };
 
 export const translations = {
@@ -24,6 +26,8 @@ export const translations = {
     experience_lactec: "Engineering Intern - Curitiba, PR",
     experience_baja: "Extension Project - Baja SAE, UFPR",
     experience_PET: "Extension Project - PET, UFPR",
+    project_DPD : "Digital Pré Distorsor",
+    project_DPD_description: "A digital pre-distortion system for RF applications.",
     experience_title: "Professional Experience",
     experience_iotag: "Software Developer - IOTAG, Curitiba, PR",
     projects_title: "Projects",
@@ -93,6 +97,8 @@ export const translations = {
     experience_title: "Experiência Profissional",
     experience_iotag: "Desenvolvedor de Software - IOTAG, Curitiba, PR",
     projects_title: "Projetos",
+    project_DPD : "Pré-distorcedor Digital",
+    project_DPD_description: "Um sistema de pré-distorção digital para aplicações de RF.",
     project_assistant: "Assistente Virtual Multimodal",
     project_assistant_description: "Um assistente virtual que entende e processa múltiplas formas de entrada, incluindo texto, voz e gestos.",
     project_lock: "Fechadura Eletrônica Inteligente",
@@ -158,6 +164,8 @@ export const translations = {
     experience_title: "Experiencia Profesional",
     experience_iotag: "Desarrollador de Software - IOTAG, Curitiba, PR",
     projects_title: "Proyectos",
+    project_DPD : "pre-distorsionador digital",
+    project_DPD_description: "Um sistema de pré-distorção digital para aplicações de RF.",
     project_assistant: "Asistente Virtual Multimodal",
     project_assistant_description: "Un asistente virtual que entiende y procesa múltiples formas de entrada, incluyendo texto, voz y gestos.",
     project_lock: "Cerradura Electrónica Inteligente",
