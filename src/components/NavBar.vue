@@ -6,12 +6,13 @@
 
       <!-- Links -->
       <div class="nav-links">
-        <a router-link="/" class="nav-link">{{ t('nav_home') }}</a>
-        <a router-link="/academic" class="nav-link">{{ t('nav_education') }}</a>
-        <a router-link="/experiences" class="nav-link">{{ t('nav_experience') }}</a>
-        <a router-link="/projects" class="nav-link">{{ t('nav_projects') }}</a>
+        <router-link to="/" class="nav-link">{{ t('nav_home') }}</router-link>
+        <router-link to="/academic" class="nav-link">{{ t('nav_education') }}</router-link>
+        <router-link to="/experiences" class="nav-link">{{ t('nav_experience') }}</router-link>
+        <router-link to="/projects" class="nav-link">{{ t('nav_projects') }}</router-link>
         <a href="#contact" class="nav-link">{{ t('nav_contact') }}</a>
       </div>
+
 
       <!-- Select Idioma -->
       <select v-model="locale" class="language-select">
