@@ -24,7 +24,7 @@
             <p>{{ t('project_trng_description') }}</p>
             <p class="experience-date">10/2021 - 10/2022</p>      
           </div>
-          <img :src="require('@/assets/images/iotag.webp')" alt="Work Image" class="experience-image">
+          <img :src="require('@/assets/images/trng.png')" alt="Work Image" class="experience-image">
         </div>
         <div class="project-item">
           <div class="education-text">

@@ -3,7 +3,8 @@ export const GLOBAL_VARS = {
   linkedInUrl: "https://www.linkedin.com/in/leonardo-20-as/",
   lattesUrl: "https://lattes.cnpq.br/2911002601216607",
   dpdUrl: "https://jpm.ufpr.br/wp-content/uploads/2024/12/15.pdf",
-  trngUrl: "https://jpm.ufpr.br/wp-content/uploads/2024/12/15.pdf",
+  trngUrl:
+    "https://jpm.ufpr.br/wp-content/uploads/2024/05/semicro-pr_2022_paper_11.pdf",
 };
 
 export const translations = {
