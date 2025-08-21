@@ -86,7 +86,7 @@
 .education-item h3,
 .experience-item h3,
 .project-item h3 {
-    font-size: 1.5rem;
+    font-size: 2em;
     font-weight: 600;
     color: #60a5fa;
     margin-bottom: 0.5rem;
@@ -104,7 +104,7 @@
 .education-item p,
 .experience-item p,
 .project-item p {
-    font-size: 1rem;
+    font-size: 1.5rem;
     line-height: 1.5;
 }
 
