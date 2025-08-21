@@ -9,7 +9,6 @@
             <p class="education-date">2019 - 2024</p>
             <p>{{ t('education_master_description') }}</p>
             <p class="education-date">2024 - {{ t('present') }}</p>
-            
           </div>
           <img :src="require('@/assets/images/UFPR.webp')" alt="Education Image" class="education-image">
         </div>
