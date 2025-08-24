@@ -16,12 +16,12 @@
             <p>{{ t('project_lock_description') }}</p>      
             <p class="experience-date">10/2021 - 10/2022</p>      
           </div>
-          <img :src="require('@/assets/images/iotag.webp')" alt="Work Image" class="experience-image">
+          <img :src="require('@/assets/images/locker.png')" alt="Work Image" class="experience-image">
         </div>
         <div class="project-item">
           <div class="education-text">
             <h3><a href='https://github.com/Je-Leo-AS/TRNG' target="_blank">{{ t('project_trng') }}</a></h3>
-            <p>{{ t('project_trng_description') }}</p>
+            <p v-html="t('project_trng_description')"></p>
             <p class="experience-date">10/2021 - 10/2022</p>      
           </div>
           <img :src="require('@/assets/images/trng.png')" alt="Work Image" class="experience-image">
@@ -37,7 +37,7 @@
         <div class="project-item">
           <div class="education-text">
             <h3><a href='https://github.com/Je-Leo-AS/DPD' target="_blank">{{ t('project_DPD') }}</a></h3>
-            <p>{{ t('project_DPD_description') }}</p>
+            <p v-html="t('project_DPD_description')"></p>
             <p class="experience-date">10/2022 - 10/2024</p>      
           </div>
           <img :src="require('@/assets/images/DPD.png')" alt="Work Image" class="experience-image">

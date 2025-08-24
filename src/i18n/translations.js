@@ -24,6 +24,8 @@ export const translations = {
       "Sou Leonardo Santos, um engenheiro elétrico apaixonado por tecnologia e inovação. Minha trajetória combina experiências acadêmicas, profissionais e projetos pessoais desafiadores. Durante a graduação, fui monitor de Eletrônica Digital e Microeletrônica, auxiliei em um curso de Python para Engenharia Química e organizei a Semana de Atualização Acadêmica de Engenharia Elétrica (Seatel). No Programa de Educação Tutorial (PET), liderei projetos como IoPET (IoT e firmware), BigPET (machine learning) e PET3D (design e impressão 3D). Participei de um projeto de veículo off-road, desenvolvendo o subsistema elétrico, com conquistas como 1º lugar no projeto elétrico no Regional Sul 2019, 11º lugar nacional no Baja SAE 2020 e 2º lugar no Regional Sul 2020. Atualmente, desenvolvo firmware em C e C++ para máquinas agrícolas, otimizo análises de dados espaciais com algoritmos de ciência de dados e integro sistemas back-end e front-end. Nos meus projetos pessoais, construí um servidor caseiro com Proxmox, Tailscale VPN e máquinas virtuais rodando OpenWebUI, TrueNAS e outros serviços para IA e armazenamento seguro. Explore meu portfólio para saber mais!",
     education_title: "Formação Acadêmica",
     education_ufpr: "Engenharia Elétrica - UFPR, Curitiba, PR",
+    education_bachelor: "Licenciatura",
+    education_master: "Maestría",
     education_bachelor_description:
       "Durante minha graduação, mergulhei no universo da engenharia elétrica, desenvolvendo habilidades sólidas em projetos de circuitos elétricos para sistemas embarcados e residenciais. Minha paixão por tecnologia me levou a dominar programação em C++ e desenvolvimento de firmware para microprocessadores, criando soluções eficientes e inovadoras. Como parte do meu Trabalho de Conclusão de Curso (TCC), projetei um circuito integrado e implementei um pré-distorcedor digital baseado em polinômio de memória, enfrentando desafios técnicos que reforçaram minha capacidade de resolver problemas complexos. Além das disciplinas obrigatórias, busquei eletivas que ampliaram meu horizonte técnico, como aprendizado de máquina com Python, bancos de dados com SQL e desenvolvimento para Android. Essas experiências me proporcionaram uma visão abrangente, permitindo atuar em projetos multidisciplinares com confiança. Participei ativamente de projetos de extensão, aplicando conhecimentos teóricos em iniciativas práticas que impactaram comunidades acadêmicas e locais. Minha dedicação também se refletiu em apresentações de projetos em seminários e eventos institucionais, onde aprimorei minha habilidade de comunicar ideias técnicas de forma clara e envolvente.",
     education_master_description:
@@ -45,19 +47,23 @@ export const translations = {
     projects_title: "Projetos",
     project_DPD: "Pré-distorcedor Digital",
     project_DPD_description:
-      "Um sistema de pré-distorção digital para aplicações de RF.",
+      "Este projeto consiste na implementação de um pré-distorcedor digital (DPD) em VHDL baseado em polinômio com memória para compensar não-linearidades em amplificadores de potência (PA) de rádio frequência, visando eficiência energética em comunicações sem fio como IoT. Modelado inicialmente em Python com polinômio de segundo grau e sinal WCDMA, alcançando NMSE de -23,57 dB em vírgula flutuante e otimizado para vírgula fixa com 8 bits. Implementado em FPGA Virtex5 XC5VLX50T, utilizando 150 registradores, 692 LUTs e 4 DSP48E, operando a 61,5 MHz. Artigo disponível no link a seguir: <a href='" +
+      GLOBAL_VARS.dpdUrl +
+      "' class='text-blue-400 hover:underline'>artigo</a>!",
     project_assistant: "Assistente Virtual Multimodal",
     project_assistant_description:
       "Um assistente virtual que entende e processa múltiplas formas de entrada, incluindo texto, voz e gestos.",
     project_lock: "Fechadura Eletrônica Inteligente",
     project_lock_description:
-      "Um sistema de fechadura inteligente que melhora a segurança e a conveniência através da integração com aplicativos móveis.",
+      "Este projeto consiste em uma fechadura eletrônica inteligente baseada em IoT (Internet das Coisas), projetada para controle remoto de acesso. O sistema utiliza um módulo ESP-01 (baseado no ESP8266) como componente principal de conectividade, que se comunica via Wi-Fi e recebe comandos de um servidor MQTT implementado com o broker Mosquitto. Isso permite o acionamento da fechadura de forma segura e remota, por exemplo, através de aplicativos móveis ou integrações com assistentes virtuais. A estrutura física da fechadura foi modelada no software Autodesk Fusion 360, garantindo um design preciso e personalizado. Os componentes foram fabricados por meio de impressão 3D, resultando em uma caixa protetora robusta e compacta que abriga o mecanismo de trava, o ESP-01 e outros elementos eletrônicos como relés e sensores. O projeto enfatiza simplicidade, baixo custo e escalabilidade, ideal para aplicações residenciais ou comerciais de automação de segurança.",
     project_trng: "Circuito Integrado TRNG",
     project_trng_description:
-      "Um circuito integrado de Gerador de Números Aleatórios Verdadeiros (TRNG) projetado para aplicações seguras.",
+      "Este projeto consiste no design de um circuito integrado dedicado para um TRNG baseado em anéis osciladores, desenvolvido na tecnologia BiCMOS 8HP de 130 nm. O gerador utiliza 20 anéis osciladores (quatro por estágio), cada um com 3 portas inversoras, operando a uma frequência máxima de 200 MHz. A fonte de entropia é o jitter nos atrasos das portas, garantindo aleatoriedade verdadeira. Inicialmente implementado em FPGA e descrito em VHDL, o design seguiu o fluxo VLSI com ferramentas Cadence (NCLaunch, Genus, Innovus), resultando em 53 células lógicas, área de 653 µm² e consumo de potência de 32 µW. As sequências geradas foram validadas pelo NIST Test Suite, tornando-o adequado para aplicações criptográficas seguras. Artigo disponível no link a seguir: <a href='" +
+      GLOBAL_VARS.trngUrl +
+      "' class='text-blue-400 hover:underline'>Artigo</a>!",
     project_fake_news: "Detector de Fake News",
     project_fake_news_description:
-      "Uma ferramenta alimentada por IA que identifica e sinaliza potenciais artigos de fake news.",
+      "Este projeto desenvolveu um detector de fake news baseado em aprendizado de máquina, treinado com uma ampla coleção de textos reais e falsos. Utilizando técnicas de lemmatização, o sistema processa e analisa o conteúdo para identificar padrões que distinguem notícias verdadeiras de falsas, oferecendo alta precisão na classificação.",
     projects_invite:
       "Quer saber mais sobre meus projetos? Visite meu <a href='" +
       GLOBAL_VARS.LinkedinUrl +
@@ -113,6 +119,8 @@ export const translations = {
     experience_iotag_description:
       "At the company, our goal is to develop innovative solutions in precision agriculture, focusing on firmware, machine learning algorithms, and embedded systems, with a view to increasing efficiency and automation in the agricultural sector. I actively participated in the implementation of firmware in C and C++ for the creation of the virtual terminal interface for agricultural machinery, in addition to developing data science algorithms applied to spatial data and equipment data collection. I also created services that integrate databases and cloud computing platforms, such as AWS, ensuring the scalability and efficiency of the solutions developed.",
     education_ufpr: "Electrical Engineering - UFPR, Curitiba, PR",
+    education_bachelor: "bachelor's degree",
+    education_master: "master's degree",
     education_bachelor_description:
       "During my undergraduate studies, I immersed myself in the world of electrical engineering, developing solid skills in electrical circuit design for embedded and residential systems. My passion for technology led me to master C++ programming and firmware development for microprocessors, creating efficient and innovative solutions. As part of my final project, I designed an integrated circuit and implemented a digital pre-distortion based on memory polynomials, facing technical challenges that reinforced my ability to solve complex problems. In addition to the required courses, I sought out electives that broadened my technical horizons, such as machine learning with Python, databases with SQL, and Android development. These experiences gave me a comprehensive view, allowing me to work on multidisciplinary projects with confidence. I actively participated in extension projects, applying theoretical knowledge to practical initiatives that impacted academic and local communities. My dedication was also reflected in project presentations at seminars and institutional events, where I improved my ability to communicate technical ideas clearly and engagingly.",
     education_master_description:
@@ -131,20 +139,24 @@ export const translations = {
       "The Tutorial Education Program (PET) is fundamentally committed to improving undergraduate courses. I actively participated in the following projects: IoPET: a project focused on the development of activities related to the Internet of Things (IoT), software programming, and firmware. BigPET: a project involving the study of machine learning and the development of proposals and challenges in this area. I was the leader of this project. PET3D: a project aimed at familiarizing students with design, modeling, and 3D printing tools, in which I also served as leader. In addition, I contributed by organizing courses during the academic week and served as a teaching assistant in the subjects of Digital Electronics and Microelectronics.",
     project_DPD: "Digital Pré Distorsor",
     project_DPD_description:
-      "A digital pre-distortion system for RF applications.",
+      "This project consists of implementing a digital predistortion (DPD) in VHDL based on a polynomial with memory to compensate for nonlinearities in radio frequency power amplifiers (PA), aiming at energy efficiency in wireless communications such as IoT. Initially modeled in Python with a second-degree polynomial and WCDMA signal, achieving NMSE of -23.57 dB in floating point and optimized for 8-bit fixed point. Implemented in FPGA Virtex5 XC5VLX50T, using 150 registers, 692 LUTs, and 4 DSP48E, operating at 61.5 MHz. Article available at the following link: <a href='" +
+      GLOBAL_VARS.dpdUrl +
+      "' class='text-blue-400 hover:underline'>article</a>!",
     projects_title: "Projects",
     project_assistant: "Multimodal Virtual Assistant",
     project_assistant_description:
       "A virtual assistant that understands and processes multiple forms of input, including text, voice, and gestures.",
     project_lock: "Smart Electronic Lock",
     project_lock_description:
-      "A smart lock system that enhances security and convenience through mobile app integration.",
+      "This project consists of an IoT (Internet of Things)-based smart electronic lock designed for remote access control. The system uses an ESP-01 module (based on ESP8266) as its main connectivity component, which communicates via Wi-Fi and receives commands from an MQTT server implemented with the Mosquitto broker. This allows the lock to be activated securely and remotely, for example, through mobile applications or integrations with virtual assistants. The physical structure of the lock was modeled in Autodesk Fusion 360 software, ensuring a precise and customized design. The components were manufactured using 3D printing, resulting in a robust and compact protective case that houses the locking mechanism, the ESP-01, and other electronic elements such as relays and sensors. The project emphasizes simplicity, low cost, and scalability, ideal for residential or commercial security automation applications.",
     project_trng: "TRNG Integrated Circuit",
     project_trng_description:
-      "A True Random Number Generator (TRNG) integrated circuit designed for secure applications.",
+      " This project consists of the design of a dedicated integrated circuit for a TRNG based on oscillator rings, developed in 130 nm BiCMOS 8HP technology. The generator uses 20 oscillator rings (four per stage), each with three inverter gates, operating at a maximum frequency of 200 MHz. The source of entropy is the jitter in the gate delays, ensuring true randomness. Initially implemented in FPGA and described in VHDL, the design followed the VLSI flow with Cadence tools (NCLaunch, Genus, Innovus), resulting in 53 logic cells, an area of 653 µm², and power consumption of 32 µW. The generated sequences were validated by the NIST Test Suite, making it suitable for secure cryptographic applications. Article available at the following link: <a href='" +
+      GLOBAL_VARS.trngUrl +
+      "' class='text-blue-400 hover:underline'>Article</a>!",
     project_fake_news: "Fake News Detector",
     project_fake_news_description:
-      "An AI-powered tool that identifies and flags potential fake news articles.",
+      "This project developed a fake news detector based on machine learning, trained with a large collection of real and fake texts. Using lemmatization techniques, the system processes and analyzes content to identify patterns that distinguish real news from fake news, offering high accuracy in classification.",
     projects_invite:
       'Want to know more about my projects? Visit my <a href="' +
       GLOBAL_VARS.LinkedinUrl +
@@ -189,13 +201,16 @@ export const translations = {
     experience: "Experiencia",
     projects: "Proyectos",
     contact: "Contacto",
-    hero_subtitle:"Ingeniero de Sistemas Embebidos, Firmware, IoT y Ciencia de Datos",
+    hero_subtitle:
+      "Ingeniero de Sistemas Embebidos, Firmware, IoT y Ciencia de Datos",
     contact_button: "Contacta Conmigo",
     about_title: "Sobre Mí",
     about_text:
       "Soy Leonardo Santos, un ingeniero eléctrico apasionado por la tecnología y la innovación. Mi trayectoria combina experiencias académicas, profesionales y proyectos personales desafiantes. Durante mi carrera universitaria, fui monitor de Electrónica Digital y Microelectrónica, asistí en un curso de Python para Ingeniería Química y organicé la Semana de Actualización Académica de Ingeniería Eléctrica (Seatel). En el Programa de Educación Tutorial (PET), lideré proyectos como IoPET (IoT y firmware), BigPET (aprendizaje automático) y PET3D (diseño e impresión 3D). Participé en un proyecto de vehículo todoterreno, desarrollando el subsistema eléctrico, con logros como el 1er lugar en el proyecto eléctrico en el Regional Sur 2019, 11º lugar nacional en el Baja SAE 2020 y 2º lugar en el Regional Sur 2020. Actualmente, desarrollo firmware en C y C++ para máquinas agrícolas, optimizo análisis de datos espaciales con algoritmos de ciencia de datos e integro sistemas back-end y front-end. En mis proyectos personales, construí un servidor doméstico con Proxmox, Tailscale VPN y máquinas virtuales ejecutando OpenWebUI, TrueNAS y otros servicios para IA y almacenamiento seguro. ¡Explora mi portafolio para saber más!",
     education_title: "Formación Académica",
     education_ufpr: "Ingeniería Eléctrica - UFPR, Curitiba, PR",
+    education_bachelor: "Bacharelado",
+    education_master: "Mestrado",
     education_bachelor_description:
       "Durante mi grado, me sumergí en el universo de la ingeniería eléctrica, desarrollando habilidades sólidas en proyectos de circuitos eléctricos para sistemas embebidos y residenciales. Mi pasión por la tecnología me llevó a dominar la programación en C++ y el desarrollo de firmware para microprocesadores, creando soluciones eficientes e innovadoras. Como parte de mi Trabajo de Conclusión de Curso (TCC), diseñé un circuito integrado e implementé un predistorsionador digital basado en polinomio de memoria, enfrentando desafíos técnicos que reforzaron mi capacidad para resolver problemas complejos. Además de las asignaturas obligatorias, busqué electivas que ampliaron mi horizonte técnico, como aprendizaje automático con Python, bases de datos con SQL y desarrollo para Android. Estas experiencias me proporcionaron una visión integral, permitiéndome actuar en proyectos multidisciplinarios con confianza. Participé activamente en proyectos de extensión, aplicando conocimientos teóricos en iniciativas prácticas que impactaron comunidades académicas y locales. Mi dedicación también se reflejó en presentaciones de proyectos en seminarios y eventos institucionales, donde perfeccioné mi habilidad para comunicar ideas técnicas de forma clara y atractiva.",
     education_master_description:
@@ -217,19 +232,23 @@ export const translations = {
     projects_title: "Proyectos",
     project_DPD: "Predistorsionador Digital",
     project_DPD_description:
-      "Un sistema de predistorsión digital para aplicaciones de RF.",
+      "Este proyecto consiste en la implementación de un predistorsionador digital (DPD) en VHDL basado en polinomios con memoria para compensar las no linealidades en los amplificadores de potencia (PA) de radiofrecuencia, con el objetivo de lograr la eficiencia energética en las comunicaciones inalámbricas como el IoT. Modelado inicialmente en Python con polinomio de segundo grado y señal WCDMA, alcanzando un NMSE de -23,57 dB en coma flotante y optimizado para coma fija con 8 bits. Implementado en FPGA Virtex5 XC5VLX50T, utilizando 150 registros, 692 LUT y 4 DSP48E, operando a 61,5 MHz. Artículo disponible en el siguiente enlace: <a href='" +
+      GLOBAL_VARS.dpdUrl +
+      "' class='text-blue-400 hover:underline'>artículo</a>!",
     project_assistant: "Asistente Virtual Multimodal",
     project_assistant_description:
       "Un asistente virtual que entiende y procesa múltiples formas de entrada, incluyendo texto, voz y gestos.",
     project_lock: "Cerradura Electrónica Inteligente",
     project_lock_description:
-      "Un sistema de cerradura inteligente que mejora la seguridad y la conveniencia a través de la integración con aplicaciones móviles.",
+      "Este proyecto consiste en una cerradura electrónica inteligente basada en IoT (Internet de las cosas), diseñada para el control remoto del acceso. El sistema utiliza un módulo ESP-01 (basado en ESP8266) como componente principal de conectividad, que se comunica a través de Wi-Fi y recibe comandos de un servidor MQTT implementado con el bróker Mosquitto. Esto permite accionar la cerradura de forma segura y remota, por ejemplo, a través de aplicaciones móviles o integraciones con asistentes virtuales. La estructura física de la cerradura se modeló en el software Autodesk Fusion 360, lo que garantiza un diseño preciso y personalizado. Los componentes se fabricaron mediante impresión 3D, lo que dio como resultado una caja protectora robusta y compacta que alberga el mecanismo de cierre, el ESP-01 y otros elementos electrónicos como relés y sensores. El proyecto hace hincapié en la simplicidad, el bajo costo y la escalabilidad, ideal para aplicaciones residenciales o comerciales de automatización de seguridad.",
     project_trng: "Circuito Integrado TRNG",
     project_trng_description:
-      "Un circuito integrado de Generador de Números Aleatorios Verdaderos (TRNG) diseñado para aplicaciones seguras.",
+      " Este proyecto consiste en el diseño de un circuito integrado dedicado para un TRNG basado en anillos osciladores, desarrollado con tecnología BiCMOS 8HP de 130 nm. El generador utiliza 20 anillos osciladores (cuatro por etapa), cada uno con 3 puertas inversoras, que operan a una frecuencia máxima de 200 MHz. La fuente de entropía es la fluctuación en los retrasos de las puertas, lo que garantiza una verdadera aleatoriedad. Implementado inicialmente en FPGA y descrito en VHDL, el diseño siguió el flujo VLSI con herramientas Cadence (NCLaunch, Genus, Innovus), lo que dio como resultado 53 celdas lógicas, un área de 653 µm² y un consumo de energía de 32 µW. Las secuencias generadas fueron validadas por NIST Test Suite, lo que lo hace adecuado para aplicaciones criptográficas seguras. Artículo disponible en el siguiente enlace: <a href='" +
+      GLOBAL_VARS.trngUrl +
+      "' class='text-blue-400 hover:underline'>Artículo</a>!",
     project_fake_news: "Detector de Fake News",
     project_fake_news_description:
-      "Una herramienta impulsada por IA que identifica y señala posibles artículos de noticias falsas.",
+      "Este proyecto desarrolló un detector de noticias falsas basado en el aprendizaje automático, entrenado con una amplia colección de textos reales y falsos. Utilizando técnicas de lematización, el sistema procesa y analiza el contenido para identificar patrones que distinguen las noticias verdaderas de las falsas, ofreciendo una alta precisión en la clasificación.",
     projects_invite:
       "¿Quieres saber más sobre mis proyectos? ¡Visita mi <a href='" +
       GLOBAL_VARS.LinkedinUrl +
