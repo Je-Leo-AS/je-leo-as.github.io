@@ -5,8 +5,8 @@
       <section class="section">
         <h2>{{ t('contact_title') }}</h2>
         <div class="contact-content">
-          <p>Email: <a href="mailto:leonardo_as20@hotmail.com">leonardo_as20@hotmail.com</a></p>
-          <p>Phone: (41) 98826-7727</p>
+          <p>Email: <a href="mailto:leo.santos.engineering@gmail.com">leo.santos.engineering@gmail.com</a></p>
+          <p>Phone: (62) 996843248</p>
           <div class="social-links">
             <a :href="linkedInUrl" target="_blank" class="social-button">
               <i class="fab fa-linkedin-in"></i> LinkedIn
