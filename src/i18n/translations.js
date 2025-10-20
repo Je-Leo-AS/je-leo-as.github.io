@@ -66,6 +66,10 @@ export const translations = {
     project_fake_news: "Detector de Fake News",
     project_fake_news_description:
       "Este projeto desenvolveu um detector de fake news baseado em aprendizado de máquina, treinado com uma ampla coleção de textos reais e falsos. Utilizando técnicas de lemmatização, o sistema processa e analisa o conteúdo para identificar padrões que distinguem notícias verdadeiras de falsas, oferecendo alta precisão na classificação.",
+    project_n8n_agents: "Agentes Automatizados (n8n)",
+    project_n8n_intro: "Dois agentes automatizados usando n8n:",
+    project_n8n_agent_infra: "Agente de infra: manutenção da rede e do servidor privado Proxmox via VPN Tailscale.",
+    project_n8n_agent_comm: "Agente de comunicação: administra emails e mensagens (WhatsApp, Gmail) e envia avisos para meu telefone pessoal.",
     projects_invite:
       "Quer saber mais sobre meus projetos? Visite meu <a href='" +
       GLOBAL_VARS.LinkedinUrl +
@@ -159,6 +163,10 @@ export const translations = {
     project_fake_news: "Fake News Detector",
     project_fake_news_description:
       "This project developed a fake news detector based on machine learning, trained with a large collection of real and fake texts. Using lemmatization techniques, the system processes and analyzes content to identify patterns that distinguish real news from fake news, offering high accuracy in classification.",
+    project_n8n_agents: "Automated Agents (n8n)",
+    project_n8n_intro: "Two automated agents using n8n:",
+    project_n8n_agent_infra: "Infrastructure agent: maintenance of the network and a private Proxmox server via Tailscale VPN.",
+    project_n8n_agent_comm: "Communication agent: manages emails and messages (WhatsApp, Gmail) and sends alerts to my personal phone.",
     projects_invite:
       'Want to know more about my projects? Visit my <a href="' +
       GLOBAL_VARS.LinkedinUrl +
@@ -252,6 +260,10 @@ export const translations = {
     project_fake_news: "Detector de Fake News",
     project_fake_news_description:
       "Este proyecto desarrolló un detector de noticias falsas basado en el aprendizaje automático, entrenado con una amplia colección de textos reales y falsos. Utilizando técnicas de lematización, el sistema procesa y analiza el contenido para identificar patrones que distinguen las noticias verdaderas de las falsas, ofreciendo una alta precisión en la clasificación.",
+      project_n8n_agents: "Agentes Automatizados (n8n)",
+      project_n8n_intro: "Dos agentes automatizados usando n8n:",
+      project_n8n_agent_infra: "Agente de infra: mantenimiento de la red y del servidor privado Proxmox vía VPN Tailscale.",
+      project_n8n_agent_comm: "Agente de comunicación: administra correos y mensajes (WhatsApp, Gmail) y envía avisos a mi teléfono personal.",
     projects_invite:
       "¿Quieres saber más sobre mis proyectos? ¡Visita mi <a href='" +
       GLOBAL_VARS.LinkedinUrl +
