@@ -14,6 +14,9 @@
             <a :href="lattesUrl" target="_blank" class="social-button">
               <i class="fas fa-file-alt"></i> Lattes
             </a>
+            <a :href="githubUrl" target="_blank" class="social-button">
+              <i class="fab fa-github"></i> GitHub
+            </a>
           </div>
         </div>
       </section>
@@ -39,6 +42,7 @@ const { t } = useI18n()
 import { ref, computed } from 'vue'
 const linkedInUrl = process.env.VUE_APP_LINKEDIN_URL
 const lattesUrl = process.env.VUE_APP_LATTES_URL
+const githubUrl = process.env.VUE_APP_GITHUB_URL
 
 const selectedResumeLang = ref('pt') // Idioma padrão: Português
 const resumeUrl = computed(() => {
