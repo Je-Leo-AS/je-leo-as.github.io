@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "updated": "2026-10-05",
+  "default": "official-en",
+  "items": [
+    {
+      "id": "official-en",
+      "label": {
+        "pt": "Currículo oficial em inglês",
+        "en": "Official resume in English",
+        "es": "Currículum oficial en inglés"
+      },
+      "kind": "official",
+      "language": "en",
+      "url": "https://github.com/Je-Leo-AS/Curriculo/raw/refs/heads/EN/main.pdf",
+      "source": "github:Je-Leo-AS/Curriculo@EN"
+    },
+    {
+      "id": "official-pt",
+      "label": {
+        "pt": "Currículo oficial em português",
+        "en": "Official resume in Portuguese",
+        "es": "Currículum oficial en portugués"
+      },
+      "kind": "official",
+      "language": "pt-BR",
+      "url": "https://github.com/Je-Leo-AS/Curriculo/raw/refs/heads/PT-BR/main.pdf",
+      "source": "github:Je-Leo-AS/Curriculo@PT-BR"
+    },
+    {
+      "id": "sqc-control-error-correction-cv",
+      "label": {
+        "pt": "SQC - Software Engineer, Control & Error Correction",
+        "en": "SQC - Software Engineer, Control & Error Correction",
+        "es": "SQC - Software Engineer, Control & Error Correction"
+      },
+      "kind": "application-cv",
+      "language": "en",
+      "url": "/resumes/applications/Leonardo_Santos_CV_SQC_Control_Error_Correction.pdf",
+      "application_id": "sqc-control-error-correction-2026"
+    },
+    {
+      "id": "sqc-control-error-correction-cover",
+      "label": {
+        "pt": "Cover letter - SQC Control & Error Correction",
+        "en": "Cover letter - SQC Control & Error Correction",
+        "es": "Cover letter - SQC Control & Error Correction"
+      },
+      "kind": "cover-letter",
+      "language": "en",
+      "url": "/resumes/applications/Leonardo_Santos_Cover_Letter_SQC_Control_Error_Correction.pdf",
+      "application_id": "sqc-control-error-correction-2026"
+    },
+    {
+      "id": "sqc-quantum-control-automation-cv",
+      "label": {
+        "pt": "SQC - Quantum Engineer, Control and Automation",
+        "en": "SQC - Quantum Engineer, Control and Automation",
+        "es": "SQC - Quantum Engineer, Control and Automation"
+      },
+      "kind": "application-cv",
+      "language": "en",
+      "url": "/resumes/applications/Leonardo_Santos_CV_SQC_Quantum_Control_Automation.pdf",
+      "application_id": "sqc-quantum-control-automation-2026"
+    },
+    {
+      "id": "sqc-quantum-control-automation-cover",
+      "label": {
+        "pt": "Cover letter - SQC Control and Automation",
+        "en": "Cover letter - SQC Control and Automation",
+        "es": "Cover letter - SQC Control and Automation"
+      },
+      "kind": "cover-letter",
+      "language": "en",
+      "url": "/resumes/applications/Leonardo_Santos_Cover_Letter_SQC_Quantum_Control_Automation.pdf",
+      "application_id": "sqc-quantum-control-automation-2026"
+    }
+  ]
+}

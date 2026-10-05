@@ -1,0 +1,95 @@
+[
+  {
+    "id": "dpd-fpga-master",
+    "name": "Digital Predistortion and FPGA Implementation for RF Power Amplifier Linearization",
+    "category": "research",
+    "summary": "Master's research on RF power-amplifier behavioural modelling, memory polynomial Digital Predistortion and FPGA/VHDL-oriented implementation.",
+    "technologies": [
+      "Python",
+      "VHDL",
+      "DSP",
+      "FPGA",
+      "fixed-point",
+      "RF",
+      "NumPy"
+    ],
+    "bullets": [
+      {
+        "text": "Developed Python reference models for RF power-amplifier behaviour and Digital Predistortion using memory polynomial structures.",
+        "tags": [
+          "python",
+          "rf",
+          "dsp",
+          "modelling"
+        ]
+      },
+      {
+        "text": "Translated selected DSP structures into fixed-point VHDL datapaths for FPGA-oriented execution.",
+        "tags": [
+          "vhdl",
+          "fpga",
+          "fixed-point",
+          "realtime"
+        ]
+      },
+      {
+        "text": "Compared Python fixed-point outputs with VHDL simulation results for bit-accurate validation.",
+        "tags": [
+          "verification",
+          "simulation",
+          "reference-models"
+        ]
+      },
+      {
+        "text": "Measured implementation characteristics including clock frequency, latency, resource use and simulation timing.",
+        "tags": [
+          "latency",
+          "metrics",
+          "fpga",
+          "timing"
+        ]
+      }
+    ],
+    "relevant_for": [
+      "fpga",
+      "embedded",
+      "realtime",
+      "rf",
+      "quantum-control",
+      "measurement-automation"
+    ]
+  },
+  {
+    "id": "trng-fpga-asic",
+    "name": "FPGA-based TRNG / ASIC Research",
+    "category": "research",
+    "summary": "True random number generator described in VHDL and explored in FPGA/ASIC research context.",
+    "technologies": [
+      "VHDL",
+      "FPGA",
+      "Cadence",
+      "ASIC"
+    ],
+    "relevant_for": [
+      "fpga",
+      "digital-design",
+      "verification"
+    ]
+  },
+  {
+    "id": "baja-sae-electrical",
+    "name": "Baja SAE Electrical and Embedded Systems",
+    "category": "student-project",
+    "summary": "Electrical subsystem, wiring harness, PCB-related work and firmware/integration testing for off-road vehicle project.",
+    "technologies": [
+      "firmware",
+      "PCB",
+      "wiring harness",
+      "testing"
+    ],
+    "relevant_for": [
+      "embedded",
+      "hardware-integration"
+    ]
+  }
+]
