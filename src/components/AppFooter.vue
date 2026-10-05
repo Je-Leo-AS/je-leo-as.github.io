@@ -24,11 +24,7 @@
       <section class="section">
         <h2 class="resume-title">{{ t('portifolio_title') }}</h2>
         <p class="resume-helper">{{ t('resume_helper') }}</p>
-        <select v-model="selectedResumeId" class="resume-select">
-          <option v-for="resume in resumeItems" :key="resume.id" :value="resume.id">
-            {{ resumeLabel(resume) }}
-          </option>
-        </select>
+        <p class="resume-current">{{ currentResumeLabel }}</p>
         <div class="resume-actions">
           <a :href="resumeUrl" download class="resume-download-button">{{ t('resume_download') }}</a>
           <a href="/career-db/resume_catalog.json" target="_blank" class="resume-data-link">{{ t('career_data') }}</a>
@@ -51,33 +47,50 @@ const githubUrl = process.env.VUE_APP_GITHUB_URL
 
 const fallbackResumes = [
   {
-    id: 'official-en',
+    id: 'base-en',
+    kind: 'base-cv',
+    language: 'en',
     label: {
-      pt: 'Currículo oficial em inglês',
-      en: 'Official resume in English',
-      es: 'Currículum oficial en inglés',
+      pt: 'Currículo base em inglês',
+      en: 'Base CV in English',
+      es: 'Currículum base en inglés',
     },
-    url: 'https://github.com/Je-Leo-AS/Curriculo/raw/refs/heads/EN/main.pdf',
+    url: '/resumes/base-en.pdf',
   },
   {
-    id: 'official-pt',
+    id: 'base-pt-BR',
+    kind: 'base-cv',
+    language: 'pt-BR',
     label: {
-      pt: 'Currículo oficial em português',
-      en: 'Official resume in Portuguese',
-      es: 'Currículum oficial en portugués',
+      pt: 'Currículo base em português',
+      en: 'Base CV in Portuguese',
+      es: 'Currículum base en portugués',
     },
-    url: 'https://github.com/Je-Leo-AS/Curriculo/raw/refs/heads/PT-BR/main.pdf',
+    url: '/resumes/base-pt-BR.pdf',
   },
 ]
 
 const resumeItems = ref(fallbackResumes)
-const selectedResumeId = ref('official-en')
+
+const localeToResumeLanguage = computed(() => {
+  if (locale.value === 'pt') return 'pt-BR'
+  if (locale.value === 'en') return 'en'
+  return 'en'
+})
 
 const selectedResume = computed(() => {
-  return resumeItems.value.find((resume) => resume.id === selectedResumeId.value) || resumeItems.value[0]
+  const baseResumes = resumeItems.value.filter((resume) => resume.kind === 'base-cv')
+  return (
+    baseResumes.find((resume) => resume.language === localeToResumeLanguage.value) ||
+    baseResumes.find((resume) => resume.language === 'en') ||
+    baseResumes[0] ||
+    fallbackResumes[0]
+  )
 })
 
 const resumeUrl = computed(() => selectedResume.value?.url || fallbackResumes[0].url)
+
+const currentResumeLabel = computed(() => resumeLabel(selectedResume.value))
 
 function resumeLabel(resume) {
   const language = locale.value || 'pt'
@@ -91,7 +104,6 @@ onMounted(async () => {
     const catalog = await response.json()
     if (Array.isArray(catalog.items) && catalog.items.length > 0) {
       resumeItems.value = catalog.items
-      selectedResumeId.value = catalog.default || catalog.items[0].id
     }
   } catch (error) {
     console.warn('Could not load resume catalog', error)

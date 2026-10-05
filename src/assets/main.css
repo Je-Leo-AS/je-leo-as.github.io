@@ -384,6 +384,13 @@ html, body {
     line-height: 1.35;
 }
 
+.resume-current {
+    margin: 0.2rem auto 0.75rem;
+    max-width: 420px;
+    color: #e2e8f0;
+    font-weight: 600;
+}
+
 .resume-actions {
     display: flex;
     justify-content: center;
