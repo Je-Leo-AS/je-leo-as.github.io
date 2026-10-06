@@ -36,7 +36,7 @@
 <script setup>
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { useI18n } from 'vue-i18n'
-import { ref, computed, onMounted } from 'vue'
+import { computed } from 'vue'
 
 const { t, locale } = useI18n()
 
@@ -69,8 +69,6 @@ const fallbackResumes = [
   },
 ]
 
-const resumeItems = ref(fallbackResumes)
-
 const localeToResumeLanguage = computed(() => {
   if (locale.value === 'pt') return 'pt-BR'
   if (locale.value === 'en') return 'en'
@@ -78,11 +76,9 @@ const localeToResumeLanguage = computed(() => {
 })
 
 const selectedResume = computed(() => {
-  const baseResumes = resumeItems.value.filter((resume) => resume.kind === 'base-cv')
   return (
-    baseResumes.find((resume) => resume.language === localeToResumeLanguage.value) ||
-    baseResumes.find((resume) => resume.language === 'en') ||
-    baseResumes[0] ||
+    fallbackResumes.find((resume) => resume.language === localeToResumeLanguage.value) ||
+    fallbackResumes.find((resume) => resume.language === 'en') ||
     fallbackResumes[0]
   )
 })
@@ -95,17 +91,4 @@ function resumeLabel(resume) {
   const language = locale.value || 'pt'
   return resume?.label?.[language] || resume?.label?.pt || resume?.label?.en || resume?.id || 'Resume'
 }
-
-onMounted(async () => {
-  try {
-    const response = await fetch('/career-db/resume_catalog.json', { cache: 'no-cache' })
-    if (!response.ok) return
-    const catalog = await response.json()
-    if (Array.isArray(catalog.items) && catalog.items.length > 0) {
-      resumeItems.value = catalog.items
-    }
-  } catch (error) {
-    console.warn('Could not load resume catalog', error)
-  }
-})
 </script>
