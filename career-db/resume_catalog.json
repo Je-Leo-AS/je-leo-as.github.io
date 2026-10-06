@@ -28,6 +28,30 @@
       "source_id": "base-pt-BR"
     },
     {
+      "id": "optiver-fpga-engineer-2026-cv",
+      "kind": "application-cv",
+      "language": "en",
+      "label": {
+        "pt": "Optiver - FPGA Engineer",
+        "en": "Optiver - FPGA Engineer",
+        "es": "Optiver - FPGA Engineer"
+      },
+      "url": "/resumes/optiver-fpga-engineer-cv.pdf",
+      "application_id": "optiver-fpga-engineer-2026"
+    },
+    {
+      "id": "optiver-fpga-engineer-2026-cover-letter",
+      "kind": "cover-letter",
+      "language": "en",
+      "label": {
+        "pt": "Cover letter - Optiver FPGA Engineer",
+        "en": "Cover letter - Optiver FPGA Engineer",
+        "es": "Cover letter - Optiver FPGA Engineer"
+      },
+      "url": "/resumes/optiver-fpga-engineer-cover-letter.pdf",
+      "application_id": "optiver-fpga-engineer-2026"
+    },
+    {
       "id": "sqc-control-error-correction-2026-cv",
       "kind": "application-cv",
       "language": "en",
