@@ -27,7 +27,6 @@
         <p class="resume-current">{{ currentResumeLabel }}</p>
         <div class="resume-actions">
           <a :href="resumeUrl" download class="resume-download-button">{{ t('resume_download') }}</a>
-          <a href="/career-db/resume_catalog.json" target="_blank" class="resume-data-link">{{ t('career_data') }}</a>
         </div>
       </section>
     </div>

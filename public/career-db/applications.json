@@ -45,5 +45,31 @@
       "data acquisition",
       "experimental validation"
     ]
+  },
+  {
+    "id": "optiver-fpga-engineer-2026",
+    "company": "Optiver",
+    "role": "FPGA Engineer",
+    "url": "https://www.linkedin.com/jobs/view/4423662274",
+    "date": "2026-10-06",
+    "folder": "Applications/Optiver_FPGA_Engineer_2026",
+    "canonical_folder": "resumes/applications/2026/optiver-fpga-engineer",
+    "selected_experiences": [
+      "iotag-embedded-software-engineer"
+    ],
+    "selected_projects": [
+      "dpd-fpga-master",
+      "trng-fpga-asic"
+    ],
+    "keywords": [
+      "FPGA",
+      "VHDL",
+      "low latency",
+      "C++",
+      "Python",
+      "Linux",
+      "network-aware systems",
+      "DSP"
+    ]
   }
 ]

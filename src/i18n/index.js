@@ -3,7 +3,7 @@ import { translations } from "./translations";
 
 export const i18n = createI18n({
   legacy: false,
-  locale: "pt",
+  locale: "en",
   fallbackLocale: "en",
   messages: translations,
 });
